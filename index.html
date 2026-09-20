@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biddex — Verified B2B procurement for Bahrain</title>
+<meta name="description" content="Biddex is Bahrain's B2B procurement marketplace. Every supplier clears a Sijillat registry check before they can quote — re-verified every year.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23FF4D68%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 font-family=%22Georgia%22 font-weight=%22700%22 fill=%22%23fff%22 text-anchor=%22middle%22>B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0F1030;
+    --bg-mid:#171A48;
+    --bg-band:#141640;
+    --ink:#F3F1FA;
+    --ink-soft:#C9C7E4;
+    --ink-mute:#8E8CBA;
+    --coral:#FF4D68;
+    --coral-soft:#3A1E33;
+    --gold:#F0B429;
+    --line:rgba(243,241,250,0.12);
+    --line-soft:rgba(243,241,250,0.07);
+    --radius:14px;
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(15,16,48,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:9px;background:var(--coral);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:18px;color:#fff;flex-shrink:0;
+  }
+  .brand-word{font-family:'Space Grotesk';font-weight:600;font-size:19px;color:var(--ink);}
+  .brand-tag{font-size:11px;color:var(--ink-mute);margin-top:1px;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:10px;font-size:14px;font-weight:600;font-family:'IBM Plex Sans';
+    padding:11px 20px;text-decoration:none;border:1px solid transparent;cursor:pointer;
+  }
+  .btn-coral{background:var(--coral);color:#fff;}
+  .btn-coral:hover{background:#ff6b80;}
+  .btn-ghost{border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink-soft);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:76px 0 88px;
+    background:
+      radial-gradient(600px 300px at 88% -8%, rgba(255,77,104,0.16), transparent 60%),
+      radial-gradient(500px 260px at 10% 110%, rgba(240,180,41,0.08), transparent 60%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.8fr;gap:56px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;color:var(--gold);font-family:'IBM Plex Mono';
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .hero h1{font-size:44px;line-height:1.12;max-width:12.5ch;}
+  .hero p.lede{font-size:17px;color:var(--ink-soft);max-width:46ch;margin:22px 0 30px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;}
+  .hero-note{margin-top:20px;font-size:13px;color:var(--ink-mute);}
+
+  /* seal graphic */
+  .seal-wrap{display:flex;justify-content:center;}
+  .seal{width:280px;height:280px;position:relative;}
+  .seal svg{width:100%;height:100%;}
+  .seal-ring-text{font-family:'IBM Plex Mono';font-size:10.4px;letter-spacing:0.14em;fill:var(--ink-soft);}
+  .seal-center-num{font-family:'Space Grotesk';font-weight:700;font-size:15px;fill:var(--ink);}
+  .seal-center-sub{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:0.1em;fill:var(--ink-mute);}
+
+  /* ---------- flow section ---------- */
+  section{padding:70px 0;}
+  .section-head{max-width:56ch;margin-bottom:44px;}
+  .section-head h2{font-size:29px;}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:15.5px;}
+  .band{background:var(--bg-band);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+
+  .flow{display:flex;overflow-x:auto;gap:0;padding-bottom:6px;scrollbar-width:thin;}
+  .flow-step{
+    flex:0 0 auto;width:196px;padding:20px 18px 22px;position:relative;
+    border-left:1px solid var(--line);
+  }
+  .flow-step:first-child{border-left:none;}
+  .flow-num{
+    font-family:'IBM Plex Mono';font-size:12px;color:var(--coral);margin-bottom:14px;
+  }
+  .flow-step h3{font-size:16.5px;margin-bottom:8px;}
+  .flow-step p{font-size:13.5px;color:var(--ink-mute);margin:0;line-height:1.5;}
+
+  /* ---------- verification section ---------- */
+  .verify-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
+  .check-list{border-top:1px solid var(--line);}
+  .check-row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);}
+  .check-idx{font-family:'IBM Plex Mono';font-size:13px;color:var(--ink-mute);padding-top:2px;flex-shrink:0;width:20px;}
+  .check-row h3{font-size:16px;margin-bottom:6px;}
+  .check-row p{font-size:14px;color:var(--ink-mute);margin:0;}
+
+  /* ---------- categories ---------- */
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .cat{background:var(--bg-mid);padding:26px 20px;min-height:128px;display:flex;flex-direction:column;justify-content:space-between;}
+  .cat-status{font-size:11px;font-family:'IBM Plex Mono';letter-spacing:0.04em;}
+  .cat-status.live{color:var(--gold);}
+  .cat-status.soon{color:var(--ink-mute);}
+  .cat h3{font-size:16px;margin-top:14px;}
+
+  /* ---------- roles ---------- */
+  .role-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;}
+  .role-card{
+    border-radius:20px;padding:36px;position:relative;overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .role-card.buyer{background:linear-gradient(160deg,var(--bg-mid),var(--coral-soft));}
+  .role-card.supplier{background:var(--bg-mid);}
+  .role-card h3{font-size:23px;margin-bottom:12px;}
+  .role-card p{color:var(--ink-soft);font-size:14.5px;margin:0 0 26px;max-width:36ch;}
+  .role-tag{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--ink-mute);margin-bottom:16px;display:block;}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-soft);padding:44px 0 40px;}
+  .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .foot-links a{font-size:13.5px;color:var(--ink-mute);text-decoration:none;}
+  .foot-links a:hover{color:var(--ink-soft);}
+  .foot-legal{font-size:13px;color:var(--ink-mute);margin-top:22px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .seal-wrap{order:-1;}
+    .seal{width:200px;height:200px;}
+    .hero h1{font-size:34px;max-width:none;}
+    .verify-grid{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:1fr 1fr;}
+    .role-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark">B</span>
+      <span>
+        <span class="brand-word" style="display:block;">Biddex</span>
+        <span class="brand-tag">Bahrain B2B procurement</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#flow">How it works</a>
+      <a href="#verification">Verification</a>
+      <a href="#categories">Categories</a>
+    </nav>
+    <div style="display:flex;gap:10px;">
+      <a class="btn btn-ghost" href="https://app.biddex.online/">Log in</a>
+      <a class="btn btn-coral" href="https://app.biddex.online/">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Live now in Restaurants &amp; Cafés</span>
+        <h1>Suppliers here don't self-declare. They clear a registry check.</h1>
+        <p class="lede">Biddex verifies every company against Bahrain's Sijillat commercial registry before they can submit a quote — and the check repeats every year, not just at signup. Buyers award LPOs to suppliers they can actually stand behind.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-coral" href="https://app.biddex.online/">Post a request as a buyer</a>
+          <a class="btn btn-ghost" href="https://app.biddex.online/">Get verified as a supplier</a>
+        </div>
+        <p class="hero-note">No commercial registration required to create a company profile — CR verification comes before your first quote.</p>
+      </div>
+      <div class="seal-wrap">
+        <div class="seal">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="92" fill="none" stroke="var(--line)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="1"/>
+            <path id="ringPath" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none"/>
+            <text class="seal-ring-text">
+              <textPath href="#ringPath" startOffset="0%">SIJILLAT VERIFIED &#8226; RE-CHECKED ANNUALLY &#8226; SIJILLAT VERIFIED &#8226; RE-CHECKED ANNUALLY &#8226; </textPath>
+            </text>
+            <circle cx="100" cy="100" r="52" fill="none" stroke="var(--coral)" stroke-width="1.4"/>
+            <path d="M78 101 L94 117 L124 84" fill="none" stroke="var(--coral)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How a deal moves</h2>
+        <p>One thread from first request to final payment — every stage stays inside Biddex, so nothing gets negotiated off-platform where it can't be tracked.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <h3>RFQ</h3>
+          <p>Buyer posts a request with quantities, specs and a budget.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <h3>Quotes</h3>
+          <p>Verified suppliers in the category submit priced quotes.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <h3>LPO</h3>
+          <p>Buyer awards one quote; a local purchase order is issued.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <h3>Order</h3>
+          <p>Supplier confirms and prepares the order against the LPO.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">05</div>
+          <h3>Delivery</h3>
+          <p>Fulfilment is tracked against the agreed terms.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">06</div>
+          <h3>Invoice</h3>
+          <p>Supplier invoices against the delivered order.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">07</div>
+          <h3>Payment</h3>
+          <p>Buyer settles the invoice and the record closes out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="verification">
+    <div class="wrap verify-grid">
+      <div class="section-head" style="margin-bottom:0;">
+        <h2>Verification is the product</h2>
+        <p>A marketplace is only as useful as the trust it can vouch for. Biddex doesn't take a company's word for it — every account clears checks against the official registry before it can transact.</p>
+      </div>
+      <div class="check-list">
+        <div class="check-row">
+          <div class="check-idx mono">01</div>
+          <div>
+            <h3>Registration confirmed</h3>
+            <p>Company details are matched against the Sijillat commercial registry, not typed into a form and trusted.</p>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-idx mono">02</div>
+          <div>
+            <h3>Standing checked</h3>
+            <p>An account only reaches full access once its registration is confirmed active and in good standing.</p>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-idx mono">03</div>
+          <div>
+            <h3>Re-cleared annually</h3>
+            <p>The check runs again every year, so a supplier can't go quiet on compliance after their first approval.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Built for Bahrain's buying categories</h2>
+        <p>Biddex is launching one category at a time, so every request lands in front of suppliers who actually serve it.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat">
+          <span class="cat-status live mono">LIVE</span>
+          <h3>Restaurants &amp; Cafés</h3>
+        </div>
+        <div class="cat">
+          <span class="cat-status soon mono">COMING SOON</span>
+          <h3>Hotels &amp; Hospitality</h3>
+        </div>
+        <div class="cat">
+          <span class="cat-status soon mono">COMING SOON</span>
+          <h3>Retail &amp; Supermarkets</h3>
+        </div>
+        <div class="cat">
+          <span class="cat-status soon mono">COMING SOON</span>
+          <h3>Construction &amp; Facilities</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Two sides, one verified network</h2>
+      </div>
+      <div class="role-grid">
+        <div class="role-card buyer">
+          <span class="role-tag">FOR BUYERS</span>
+          <h3>Post once, hear from suppliers who can actually deliver</h3>
+          <p>Set a budget, publish the RFQ, and compare quotes from suppliers who've already cleared the registry check — no vetting calls needed on your side.</p>
+          <a class="btn btn-coral" href="https://app.biddex.online/">Create a buyer account</a>
+        </div>
+        <div class="role-card supplier">
+          <span class="role-tag">FOR SUPPLIERS</span>
+          <h3>Get verified once, get seen by every matching buyer</h3>
+          <p>Clear the registry check, list your catalog, and start bidding on live RFQs in your category.</p>
+          <a class="btn btn-ghost" href="https://app.biddex.online/">Create a supplier account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <a class="brand" href="#top">
+        <span class="brand-mark" style="width:28px;height:28px;font-size:15px;">B</span>
+        <span class="brand-word" style="font-size:16px;">Biddex</span>
+      </a>
+      <div class="foot-links">
+        <a href="#flow">How it works</a>
+        <a href="#verification">Verification</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="https://app.biddex.online/">Log in</a>
+      </div>
+    </div>
+    <p class="foot-legal">© 2026 Biddex. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
