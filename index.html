@@ -8,6 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23FF4D68%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 font-family=%22Georgia%22 font-weight=%22700%22 fill=%22%23fff%22 text-anchor=%22middle%22>B</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<noscript><style>.hero{padding-bottom:88px;} .stats{display:none;}</style></noscript>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -98,7 +99,10 @@
 
   /* ---------- live stats (filled from /api/public/stats) ---------- */
   /* The block's height is reserved from the first paint and it only fades in, so nothing on the page moves
-     while the numbers load — or if they never do (then it stays an empty band at the bottom of the hero). */
+     while the numbers load. If there is nothing to show (all null, error, timeout, no JS), the block is removed
+     and the hero gets back its original 88px bottom padding — a small, accepted shift in that case only. */
+  .hero.no-stats{padding-bottom:88px;}
+  .hero.no-stats .stats{display:none;}
   .stats{
     margin-top:44px;height:92px;padding-top:22px;border-top:1px solid var(--line-soft);
     display:flex;gap:56px;
@@ -396,11 +400,15 @@
 
 <script>
 // Live metrics: one request on load. A metric the API returns as null (below its display threshold) is
-// hidden; if none is left, or the request fails or takes too long, the whole block stays hidden.
+// hidden; if none is left, or the request fails or takes too long, the whole block is removed and the hero
+// gets its original bottom padding back.
 (function () {
   var API = 'https://b2b-procurement-backend-production.up.railway.app/api/public/stats';
   var box = document.getElementById('live-stats');
-  if (!box || !window.fetch) return;
+  if (!box) return;
+  var hero = box.closest('.hero');
+  function removeBlock() { if (hero) hero.classList.add('no-stats'); }
+  if (!window.fetch) { removeBlock(); return; }
   var ctrl = window.AbortController ? new AbortController() : null;
   var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
 
@@ -415,7 +423,7 @@
         if (typeof v === 'number' && isFinite(v) && v >= 0) shown.push({ el: items[i].querySelector('.stat-num'), value: Math.round(v) });
         else items[i].hidden = true;
       }
-      if (!shown.length) return;
+      if (!shown.length) { removeBlock(); return; }
       for (var j = 0; j < shown.length; j++) {
         // reserve the final width, so the number doesn't nudge its neighbours while it counts up
         shown[j].el.style.minWidth = format(shown[j].value).length + 'ch';
@@ -424,7 +432,7 @@
       box.setAttribute('aria-hidden', 'false');
       box.classList.add('ready');
     })
-    .catch(function () { clearTimeout(timer); });
+    .catch(function () { clearTimeout(timer); removeBlock(); });
 
   function format(n) { return n.toLocaleString('en-US'); }
 
