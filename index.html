@@ -8,6 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23FF4D68%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 font-family=%22Georgia%22 font-weight=%22700%22 fill=%22%23fff%22 text-anchor=%22middle%22>B</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<noscript><style>.hero{padding-bottom:88px;} .stats{display:none;}</style></noscript>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -71,7 +72,7 @@
 
   /* ---------- hero ---------- */
   .hero{
-    padding:76px 0 88px;
+    padding:76px 0 40px;
     background:
       radial-gradient(600px 300px at 88% -8%, rgba(255,77,104,0.16), transparent 60%),
       radial-gradient(500px 260px at 10% 110%, rgba(240,180,41,0.08), transparent 60%);
@@ -95,6 +96,25 @@
   .seal-ring-text{font-family:'IBM Plex Mono';font-size:10.4px;letter-spacing:0.14em;fill:var(--ink-soft);}
   .seal-center-num{font-family:'Space Grotesk';font-weight:700;font-size:15px;fill:var(--ink);}
   .seal-center-sub{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:0.1em;fill:var(--ink-mute);}
+
+  /* ---------- live stats (filled from /api/public/stats) ---------- */
+  /* The block's height is reserved from the first paint and it only fades in, so nothing on the page moves
+     while the numbers load. If there is nothing to show (all null, error, timeout, no JS), the block is removed
+     and the hero gets back its original 88px bottom padding — a small, accepted shift in that case only. */
+  .hero.no-stats{padding-bottom:88px;}
+  .hero.no-stats .stats{display:none;}
+  .stats{
+    margin-top:44px;height:92px;padding-top:22px;border-top:1px solid var(--line-soft);
+    display:flex;gap:56px;
+    opacity:0;visibility:hidden;transition:opacity .6s ease;
+  }
+  .stats.ready{opacity:1;visibility:visible;}
+  .stat[hidden]{display:none;}
+  .stat-num{
+    display:inline-block;font-family:'Space Grotesk';font-weight:600;font-size:30px;line-height:1.1;
+    font-variant-numeric:tabular-nums;color:var(--ink);
+  }
+  .stat-label{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-mute);margin-top:6px;letter-spacing:0.02em;}
 
   /* ---------- flow section ---------- */
   section{padding:70px 0;}
@@ -160,6 +180,8 @@
     .cat-grid{grid-template-columns:1fr 1fr;}
     .role-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
+    .stats{height:156px;display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:18px 24px;}
+    .stat-num{font-size:26px;}
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -216,6 +238,14 @@
             <path d="M78 101 L94 117 L124 84" fill="none" stroke="var(--coral)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="stats" id="live-stats" aria-hidden="true">
+        <div class="stat" data-stat="suppliers"><div class="stat-num">0</div><div class="stat-label">Verified suppliers</div></div>
+        <div class="stat" data-stat="buyers"><div class="stat-num">0</div><div class="stat-label">Verified buyers</div></div>
+        <div class="stat" data-stat="rfqs"><div class="stat-num">0</div><div class="stat-label">RFQs published</div></div>
+        <div class="stat" data-stat="quotes"><div class="stat-num">0</div><div class="stat-label">Quotes submitted</div></div>
       </div>
     </div>
   </section>
@@ -367,6 +397,62 @@
     <p class="foot-legal">© 2026 Biddex. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+// Live metrics: one request on load. A metric the API returns as null (below its display threshold) is
+// hidden; if none is left, or the request fails or takes too long, the whole block is removed and the hero
+// gets its original bottom padding back.
+(function () {
+  var API = 'https://b2b-procurement-backend-production.up.railway.app/api/public/stats';
+  var box = document.getElementById('live-stats');
+  if (!box) return;
+  var hero = box.closest('.hero');
+  function removeBlock() { if (hero) hero.classList.add('no-stats'); }
+  if (!window.fetch) { removeBlock(); return; }
+  var ctrl = window.AbortController ? new AbortController() : null;
+  var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
+
+  fetch(API, { credentials: 'omit', signal: ctrl ? ctrl.signal : undefined })
+    .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+    .then(function (data) {
+      clearTimeout(timer);
+      var items = box.querySelectorAll('[data-stat]');
+      var shown = [];
+      for (var i = 0; i < items.length; i++) {
+        var v = data ? data[items[i].getAttribute('data-stat')] : null;
+        if (typeof v === 'number' && isFinite(v) && v >= 0) shown.push({ el: items[i].querySelector('.stat-num'), value: Math.round(v) });
+        else items[i].hidden = true;
+      }
+      if (!shown.length) { removeBlock(); return; }
+      for (var j = 0; j < shown.length; j++) {
+        // reserve the final width, so the number doesn't nudge its neighbours while it counts up
+        shown[j].el.style.minWidth = format(shown[j].value).length + 'ch';
+        countUp(shown[j].el, shown[j].value);
+      }
+      box.setAttribute('aria-hidden', 'false');
+      box.classList.add('ready');
+    })
+    .catch(function () { clearTimeout(timer); removeBlock(); });
+
+  function format(n) { return n.toLocaleString('en-US'); }
+
+  function countUp(el, target) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { el.textContent = format(target); return; }
+    var start = null, duration = 1400, done = false;
+    function step(now) {
+      if (done) return;
+      if (start === null) start = now;
+      var p = Math.min(1, (now - start) / duration);
+      el.textContent = format(Math.round(target * (1 - Math.pow(1 - p, 3)))); // ease-out
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    // animation frames pause in a background tab: make sure the final number is there regardless
+    setTimeout(function () { done = true; el.textContent = format(target); }, duration + 300);
+  }
+})();
+</script>
 
 </body>
 </html>
