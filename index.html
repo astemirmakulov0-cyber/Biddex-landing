@@ -84,7 +84,7 @@
     margin-bottom:22px;
   }
   .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);}
-  .hero h1{font-size:44px;line-height:1.12;max-width:12.5ch;}
+  .hero h1{font-size:44px;line-height:1.12;max-width:15.5ch;}
   .hero p.lede{font-size:17px;color:var(--ink-soft);max-width:46ch;margin:22px 0 30px;}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;}
   .hero-note{margin-top:20px;font-size:13px;color:var(--ink-mute);}
@@ -151,6 +151,83 @@
   .cat-status.soon{color:var(--ink-mute);}
   .cat h3{font-size:16px;margin-top:14px;}
 
+  /* ---------- supply categories (what buyers actually source) ---------- */
+  .supply-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .supply-card{
+    background:var(--bg-mid);border:1px solid var(--line);border-radius:12px;
+    padding:20px 16px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;
+  }
+  .supply-icon{
+    width:38px;height:38px;border-radius:9px;background:var(--coral-soft);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .supply-icon svg{width:20px;height:20px;}
+  .supply-card span{font-size:14px;color:var(--ink-soft);line-height:1.35;}
+
+  /* ---------- product mockups (in-app previews, CSS-only) ---------- */
+  .mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .mock-card{
+    background:var(--bg-mid);border:1px solid var(--line);border-radius:16px;
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .mock-bar{
+    display:flex;align-items:center;gap:6px;padding:11px 14px;
+    border-bottom:1px solid var(--line);background:var(--bg-band);
+  }
+  .mock-dot{width:7px;height:7px;border-radius:50%;background:var(--line);}
+  .mock-title{font-family:'IBM Plex Mono';font-size:11px;color:var(--ink-mute);margin-left:4px;}
+  .mock-body{padding:18px 16px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .mock-field{display:flex;flex-direction:column;gap:4px;}
+  .mock-field label{font-size:10px;font-family:'IBM Plex Mono';color:var(--ink-mute);letter-spacing:0.03em;}
+  .mock-field .val{
+    background:var(--bg-deep);border:1px solid var(--line);border-radius:7px;
+    padding:8px 10px;font-size:13px;color:var(--ink);
+  }
+  .mock-btn{
+    margin-top:4px;align-self:flex-start;background:var(--coral);color:#fff;
+    font-size:12px;font-weight:600;font-family:'IBM Plex Sans';border-radius:8px;padding:8px 16px;
+  }
+  .mock-table{display:flex;flex-direction:column;gap:6px;font-size:11.5px;}
+  .mock-row{
+    display:grid;grid-template-columns:1.1fr 0.8fr 0.7fr 0.8fr;gap:6px;
+    padding:8px 9px;border-radius:7px;background:var(--bg-deep);border:1px solid var(--line);
+    align-items:center;
+  }
+  .mock-row.head{background:transparent;border:none;color:var(--ink-mute);font-family:'IBM Plex Mono';font-size:10px;padding:0 9px;}
+  .mock-row.best{border-color:var(--coral);}
+  .mock-row .co{color:var(--ink);font-weight:500;}
+  .mock-row .price{font-family:'IBM Plex Mono';color:var(--gold);}
+  .mock-tag{
+    display:inline-block;margin-top:2px;font-size:9.5px;font-family:'IBM Plex Mono';
+    color:var(--coral);background:var(--coral-soft);border-radius:5px;padding:2px 6px;align-self:flex-start;
+  }
+  .mock-lpo-head{display:flex;justify-content:space-between;align-items:flex-start;}
+  .mock-lpo-id{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--ink);}
+  .mock-status{
+    font-family:'IBM Plex Mono';font-size:10px;color:var(--gold);
+    background:rgba(240,180,41,0.12);border-radius:6px;padding:3px 8px;
+  }
+  .mock-divider{border-top:1px solid var(--line);margin:2px 0;}
+  .mock-note{font-size:12px;color:var(--ink-mute);margin-top:16px;}
+
+  /* ---------- contact / WhatsApp ---------- */
+  .contact-link{
+    display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink-soft);
+    text-decoration:none;padding:0 4px;
+  }
+  .contact-link:hover{color:var(--ink);}
+  .contact-link svg{width:17px;height:17px;flex-shrink:0;}
+  .foot-contact{font-size:13.5px;color:var(--ink-mute);display:flex;align-items:center;gap:7px;text-decoration:none;}
+  .foot-contact:hover{color:var(--ink-soft);}
+  .foot-contact svg{width:15px;height:15px;flex-shrink:0;}
+  .wa-fab{
+    display:none;position:fixed;right:18px;bottom:18px;z-index:50;
+    width:56px;height:56px;border-radius:50%;background:#25D366;
+    align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.35);
+    text-decoration:none;
+  }
+  .wa-fab svg{width:28px;height:28px;}
+
   /* ---------- roles ---------- */
   .role-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;}
   .role-card{
@@ -178,10 +255,19 @@
     .hero h1{font-size:34px;max-width:none;}
     .verify-grid{grid-template-columns:1fr;}
     .cat-grid{grid-template-columns:1fr 1fr;}
+    .supply-grid{grid-template-columns:1fr 1fr;}
+    .mock-grid{grid-template-columns:1fr;}
     .role-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
+    .contact-link{display:none;}
     .stats{height:156px;display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:18px 24px;}
     .stat-num{font-size:26px;}
+    .wa-fab{display:flex;}
+  }
+  @media (max-width:420px){
+    .cat-grid{grid-template-columns:1fr;}
+    .supply-grid{grid-template-columns:1fr;}
+    .mock-row{grid-template-columns:1fr 1fr;row-gap:2px;}
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -204,9 +290,15 @@
       <a href="#verification">Verification</a>
       <a href="#categories">Categories</a>
     </nav>
-    <div style="display:flex;gap:10px;">
-      <a class="btn btn-ghost" href="https://app.biddex.online/">Log in</a>
-      <a class="btn btn-coral" href="https://app.biddex.online/">Get started</a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a class="contact-link" href="https://wa.me/97333327347" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.1 2.9 13.4 2.9 3.9c0-.6.4-1 1-1H7.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        +973 3332 7347
+      </a>
+      <div style="display:flex;gap:10px;">
+        <a class="btn btn-ghost" href="https://app.biddex.online/">Log in</a>
+        <a class="btn btn-coral" href="https://app.biddex.online/">Get started</a>
+      </div>
     </div>
   </div>
 </header>
@@ -217,8 +309,8 @@
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">Live now in Restaurants &amp; Cafés</span>
-        <h1>Suppliers here don't self-declare. They're checked by our team.</h1>
-        <p class="lede">Every company is checked by hand by the Biddex team against its trade license or CR certificate before its first quote. Buyers award LPOs to suppliers whose documents someone has actually looked at.</p>
+        <h1>Send one request. Compare priced quotes from verified suppliers.</h1>
+        <p class="lede">Post what you need, and suppliers across Bahrain send back priced quotes — you compare and award the one you want. Every supplier is checked by hand by the Biddex team against its trade license or CR certificate before it can quote.</p>
         <div class="hero-ctas">
           <a class="btn btn-coral" href="https://app.biddex.online/">Post a request as a buyer</a>
           <a class="btn btn-ghost" href="https://app.biddex.online/">Get verified as a supplier</a>
@@ -296,6 +388,49 @@
     </div>
   </section>
 
+  <section id="inside">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What it looks like inside</h2>
+        <p>A simplified look at three screens in the app. Company names and numbers below are illustrative examples, not real listings.</p>
+      </div>
+      <div class="mock-grid">
+        <div class="mock-card">
+          <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">New RFQ</span></div>
+          <div class="mock-body">
+            <div class="mock-field"><label>TITLE</label><div class="val">Chicken breast, 200 kg / week</div></div>
+            <div class="mock-field"><label>QUANTITY</label><div class="val">200 kg</div></div>
+            <div class="mock-field"><label>BUDGET (BHD)</label><div class="val">480.000</div></div>
+            <div class="mock-field"><label>DEADLINE</label><div class="val">In 3 days</div></div>
+            <span class="mock-btn">Publish RFQ</span>
+          </div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">Compare bids</span></div>
+          <div class="mock-body">
+            <div class="mock-table">
+              <div class="mock-row head"><span>SUPPLIER</span><span>PRICE</span><span>DELIVERY</span><span>TERMS</span></div>
+              <div class="mock-row best"><span class="co">Supplier A</span><span class="price">465.000</span><span>2 days</span><span>30 days</span></div>
+              <div class="mock-row"><span class="co">Supplier B</span><span class="price">480.000</span><span>1 day</span><span>15 days</span></div>
+              <div class="mock-row"><span class="co">Supplier C</span><span class="price">510.000</span><span>3 days</span><span>45 days</span></div>
+            </div>
+            <span class="mock-tag">Lowest price highlighted</span>
+          </div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">Purchase order</span></div>
+          <div class="mock-body">
+            <div class="mock-lpo-head"><span class="mock-lpo-id">LPO-4821</span><span class="mock-status">ACCEPTED</span></div>
+            <div class="mock-divider"></div>
+            <div class="mock-field"><label>SUPPLIER</label><div class="val">Supplier A</div></div>
+            <div class="mock-field"><label>AMOUNT</label><div class="val">465.000 BHD</div></div>
+            <div class="mock-field"><label>PAYMENT TERMS</label><div class="val">30 days after receipt</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="verification">
     <div class="wrap verify-grid">
       <div class="section-head" style="margin-bottom:0;">
@@ -355,6 +490,45 @@
     </div>
   </section>
 
+  <section id="supply">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What restaurants and cafés order through Biddex</h2>
+        <p>The categories suppliers are quoting on today, inside Restaurants &amp; Cafés.</p>
+      </div>
+      <div class="supply-grid">
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 8.5c2 2 2.3 5.4.5 7.5-1.8 2-4.8 2-6.7.2L6 13c-1.3-1.3-1.3-3.4 0-4.7 1.3-1.3 3.4-1.3 4.7 0"/><circle cx="17" cy="7" r="2.3"/></svg></div>
+          <span>Meat &amp; Poultry</span>
+        </div>
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5v3.2L16 9v10a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 8 19V9l1.5-2.8V3Z"/><path d="M8 12h8"/></svg></div>
+          <span>Dairy</span>
+        </div>
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4.5 0-7-3.5-7-7.8C5 8.6 8.3 5 12 5"/><path d="M12 21c4.5 0 7-3.5 7-7.8C19 8.6 15.7 5 12 5"/><path d="M12 5V3"/></svg></div>
+          <span>Fruits &amp; Vegetables</span>
+        </div>
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l1.2 4.5c.7 2.8-1.4 5.5-4.3 6.2v3.8h-1.8v-3.8c-2.9-.7-5-3.4-4.3-6.2L8 4Z"/><path d="M9 4V2.4M15 4V2.4"/></svg></div>
+          <span>Dry Goods</span>
+        </div>
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3.5l1.6 2.4c.5.8.9 1.7.9 2.7V19a2 2 0 0 1-2 2H8.5a2 2 0 0 1-2-2v-7.4c0-1 .3-1.9.9-2.7L9 6.5V3Z"/><path d="M7 14h10"/></svg></div>
+          <span>Beverages</span>
+        </div>
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5 12 5l8 3.5v7L12 19l-8-3.5v-7Z"/><path d="M4 8.5 12 12l8-3.5M12 12v7"/></svg></div>
+          <span>Packaging</span>
+        </div>
+        <div class="supply-card">
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h3v2.4l1.5.9c.6.4 1 1 1 1.8V19a1.6 1.6 0 0 1-1.6 1.6h-5A1.6 1.6 0 0 1 8.4 19V8.1c0-.8.4-1.4 1-1.8L11 5.4V3Z"/><path d="M8.4 11h8.1M17 3.5h2.5M18.2 2.3v2.4"/></svg></div>
+          <span>Chemicals &amp; Cleaning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="join">
     <div class="wrap">
       <div class="section-head">
@@ -369,8 +543,8 @@
         </div>
         <div class="role-card supplier">
           <span class="role-tag">FOR SUPPLIERS</span>
-          <h3>Get verified, then bid on live RFQs</h3>
-          <p>Upload your trade license or CR certificate, get verified by our team, list your catalog, and submit quotes on open RFQs.</p>
+          <h3>Ready-made requests from restaurants — no cold calls</h3>
+          <p>Get verified once, then quote on open RFQs from buyers who already need what you sell. Free during launch — no fees to join or start quoting.</p>
           <a class="btn btn-ghost" href="https://app.biddex.online/">Create a supplier account</a>
         </div>
       </div>
@@ -394,6 +568,10 @@
         <a href="https://app.biddex.online/">Log in</a>
       </div>
     </div>
+    <a class="foot-contact" href="https://wa.me/97333327347" target="_blank" rel="noopener" style="margin-top:22px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.1 2.9 13.4 2.9 3.9c0-.6.4-1 1-1H7.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      +973 3332 7347 &middot; WhatsApp
+    </a>
     <p class="foot-legal">© 2026 Biddex. All rights reserved.</p>
   </div>
 </footer>
@@ -453,6 +631,10 @@
   }
 })();
 </script>
+
+<a class="wa-fab" href="https://wa.me/97333327347" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.1 2.9 13.4 2.9 3.9c0-.6.4-1 1-1H7.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+</a>
 
 </body>
 </html>
