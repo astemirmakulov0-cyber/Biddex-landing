@@ -246,11 +246,38 @@
     .nav-links{display:none;}
     .contact-link{display:none;}
     .wa-fab{display:flex;}
+    /* the floating WhatsApp button sits over the bottom-right corner: keep the last content clear of it */
+    footer{padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px));}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 16px;}
+    .nav{padding:10px 16px;}
+    .nav .btn{padding:9px 14px;font-size:13px;}
+    .brand-tag{display:none;}
+    /* first screen: headline, both buttons and the note fit at 375x667 */
+    .seal-wrap{display:none;}
+    .hero{padding:26px 0 40px;}
+    .hero-grid{gap:0;}
+    .eyebrow{margin-bottom:12px;}
+    .hero h1{font-size:28px;line-height:1.12;}
+    .hero p.lede{font-size:15px;margin:12px 0 20px;}
+    .hide-sm{display:none;}
+    .hero-ctas{flex-direction:column;gap:10px;}
+    .hero-ctas .btn{width:100%;}
+    .hero-note{font-size:12px;margin-top:14px;}
+    section{padding:52px 0;}
   }
   @media (max-width:420px){
     .cat-grid{grid-template-columns:1fr;}
     .supply-grid{grid-template-columns:1fr;}
     .mock-row{grid-template-columns:1fr 1fr;row-gap:2px;}
+  }
+  /* Touch, as in the app: no 300ms delay, no grey flash on tap, pressed feedback on touch screens only. */
+  body{-webkit-tap-highlight-color:transparent;padding-left:env(safe-area-inset-left, 0px);padding-right:env(safe-area-inset-right, 0px);}
+  a, button, summary, [onclick]{touch-action:manipulation;}
+  @media (pointer: coarse){
+    .btn, .wa-fab{transition:transform .12s ease;}
+    .btn:active, .wa-fab:active{transform:scale(0.97);}
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -294,7 +321,7 @@
       <div>
         <span class="eyebrow">Live now in Restaurants &amp; Cafés</span>
         <h1>Send one request. Compare priced quotes from verified suppliers.</h1>
-        <p class="lede">Post what you need, and suppliers across Bahrain send back priced quotes — you compare and award the one you want. Every supplier is checked by hand by the Biddex team against its trade license or CR certificate before it can quote.</p>
+        <p class="lede">Post what you need, and suppliers across Bahrain send back priced quotes — you compare and award the one you want. <span class="hide-sm">Every supplier is checked by hand by the Biddex team against its trade license or CR certificate before it can quote.</span></p>
         <div class="hero-ctas">
           <a class="btn btn-coral" href="https://app.biddex.online/">Post a request as a buyer</a>
           <a class="btn btn-ghost" href="https://app.biddex.online/">Get verified as a supplier</a>
