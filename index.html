@@ -2,226 +2,211 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Biddex — Verified B2B procurement for Bahrain</title>
 <meta name="description" content="Biddex is Bahrain's B2B procurement marketplace. Every company is checked by hand by the Biddex team against its trade license or CR certificate before its first quote.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23FF4D68%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 font-family=%22Georgia%22 font-weight=%22700%22 fill=%22%23fff%22 text-anchor=%22middle%22>B</text></svg>">
+<meta name="theme-color" content="#F6F8FC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0E17" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<noscript><style>.hero{padding-bottom:88px;} .stats{display:none;}</style></noscript>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Tokens mirror the app (Biddex-frontend): dark is the default here, light follows prefers-color-scheme. */
   :root{
-    --bg-deep:#0F1030;
-    --bg-mid:#171A48;
-    --bg-band:#141640;
-    --ink:#F3F1FA;
-    --ink-soft:#C9C7E4;
-    --ink-mute:#8E8CBA;
-    --coral:#FF4D68;
-    --coral-soft:#3A1E33;
-    --gold:#F0B429;
-    --line:rgba(243,241,250,0.12);
-    --line-soft:rgba(243,241,250,0.07);
+    color-scheme:dark;
+    --acc:#BE123C;           /* brand crimson: fills and buttons */
+    --acc-tx:#FB7185;        /* crimson for small text on dark, where #BE123C is too dim */
+    --acc-soft:rgba(190,18,60,0.16);
+    --bg:#0A0E17; --panel:#111826; --inset:#0D1320; --sunken:#1B2434;
+    --bd:#1E293B; --bd2:#334155;
+    --tx:#F1F5F9; --tx2:#CBD5E1; --tx3:#94A3B8; --tx4:#64748B;
+    --ok:#4ADE80; --ok-soft:rgba(74,222,128,0.12);
     --radius:14px;
-    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-family:'Inter', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      color-scheme:light;
+      --acc-tx:#BE123C; --acc-soft:rgba(190,18,60,0.1);
+      --bg:#F6F8FC; --panel:#FFFFFF; --inset:#F8FAFC; --sunken:#EEF2F8;
+      --bd:#E4E9F1; --bd2:#CBD5E1;
+      --tx:#0B1220; --tx2:#334155; --tx3:#475569; --tx4:#64748B;
+      --ok:#15803D; --ok-soft:#DCFCE7;
+    }
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--bg-deep);
-    color:var(--ink);
+    background:var(--bg);
+    color:var(--tx2);
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
-  h1,h2,h3{font-family:'Space Grotesk', sans-serif;font-weight:600;margin:0;letter-spacing:-0.01em;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
+  h1,h2,h3{font-family:'Inter', sans-serif;font-weight:800;color:var(--tx);margin:0;letter-spacing:-0.02em;}
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace;}
 
   /* ---------- nav ---------- */
   header{
     position:sticky;top:0;z-index:40;
-    background:rgba(15,16,48,0.82);
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line-soft);
+    border-bottom:1px solid var(--bd);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .brand-mark{
-    width:34px;height:34px;border-radius:9px;background:var(--coral);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk';font-weight:700;font-size:18px;color:#fff;flex-shrink:0;
-  }
-  .brand-word{font-family:'Space Grotesk';font-weight:600;font-size:19px;color:var(--ink);}
-  .brand-tag{font-size:11px;color:var(--ink-mute);margin-top:1px;}
+  .brand-mark{width:36px;height:36px;flex-shrink:0;}
+  .brand-word{font-weight:800;font-size:18px;color:var(--tx);letter-spacing:-0.01em;}
+  .brand-tag{font-family:'JetBrains Mono', monospace;font-size:9.5px;font-weight:600;letter-spacing:0.08em;color:var(--tx4);margin-top:1px;}
   .nav-links{display:flex;align-items:center;gap:28px;}
-  .nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;}
-  .nav-links a:hover{color:var(--ink);}
+  .nav-links a{font-size:14px;color:var(--tx3);text-decoration:none;}
+  .nav-links a:hover{color:var(--tx);}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;
-    border-radius:10px;font-size:14px;font-weight:600;font-family:'IBM Plex Sans';
+    border-radius:12px;font-size:14px;font-weight:700;font-family:'Inter';
     padding:11px 20px;text-decoration:none;border:1px solid transparent;cursor:pointer;
   }
-  .btn-coral{background:var(--coral);color:#fff;}
-  .btn-coral:hover{background:#ff6b80;}
-  .btn-ghost{border-color:var(--line);color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--ink-soft);}
+  .btn-coral{background:var(--acc);color:#fff;}
+  .btn-coral:hover{filter:brightness(1.12);}
+  .btn-ghost{border-color:var(--bd2);color:var(--tx);}
+  .btn-ghost:hover{border-color:var(--tx3);}
 
   /* ---------- hero ---------- */
   .hero{
-    padding:76px 0 40px;
+    padding:76px 0 88px;
     background:
-      radial-gradient(600px 300px at 88% -8%, rgba(255,77,104,0.16), transparent 60%),
-      radial-gradient(500px 260px at 10% 110%, rgba(240,180,41,0.08), transparent 60%);
+      radial-gradient(600px 300px at 88% -8%, rgba(190,18,60,0.20), transparent 60%),
+      radial-gradient(500px 260px at 10% 110%, rgba(190,18,60,0.07), transparent 60%);
   }
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.8fr;gap:56px;align-items:center;}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;
-    font-size:12.5px;color:var(--gold);font-family:'IBM Plex Mono';
+    font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--acc-tx);font-family:'JetBrains Mono';
     margin-bottom:22px;
   }
-  .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);}
-  .hero h1{font-size:44px;line-height:1.12;max-width:15.5ch;}
-  .hero p.lede{font-size:17px;color:var(--ink-soft);max-width:46ch;margin:22px 0 30px;}
+  .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc-tx);}
+  .hero h1{font-size:46px;line-height:1.08;max-width:15.5ch;}
+  .hero p.lede{font-size:17px;color:var(--tx3);max-width:46ch;margin:22px 0 30px;}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;}
-  .hero-note{margin-top:20px;font-size:13px;color:var(--ink-mute);}
+  .hero-note{margin-top:20px;font-size:13px;color:var(--tx4);max-width:52ch;}
 
   /* seal graphic */
   .seal-wrap{display:flex;justify-content:center;}
   .seal{width:280px;height:280px;position:relative;}
   .seal svg{width:100%;height:100%;}
-  .seal-ring-text{font-family:'IBM Plex Mono';font-size:10.4px;letter-spacing:0.14em;fill:var(--ink-soft);}
-  .seal-center-num{font-family:'Space Grotesk';font-weight:700;font-size:15px;fill:var(--ink);}
-  .seal-center-sub{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:0.1em;fill:var(--ink-mute);}
-
-  /* ---------- live stats (filled from /api/public/stats) ---------- */
-  /* The block's height is reserved from the first paint and it only fades in, so nothing on the page moves
-     while the numbers load. If there is nothing to show (all null, error, timeout, no JS), the block is removed
-     and the hero gets back its original 88px bottom padding — a small, accepted shift in that case only. */
-  .hero.no-stats{padding-bottom:88px;}
-  .hero.no-stats .stats{display:none;}
-  .stats{
-    margin-top:44px;height:92px;padding-top:22px;border-top:1px solid var(--line-soft);
-    display:flex;gap:56px;
-    opacity:0;visibility:hidden;transition:opacity .6s ease;
-  }
-  .stats.ready{opacity:1;visibility:visible;}
-  .stat[hidden]{display:none;}
-  .stat-num{
-    display:inline-block;font-family:'Space Grotesk';font-weight:600;font-size:30px;line-height:1.1;
-    font-variant-numeric:tabular-nums;color:var(--ink);
-  }
-  .stat-label{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-mute);margin-top:6px;letter-spacing:0.02em;}
+  .seal-ring-text{font-family:'JetBrains Mono';font-size:10.4px;letter-spacing:0.14em;fill:var(--tx3);}
 
   /* ---------- flow section ---------- */
   section{padding:70px 0;}
   .section-head{max-width:56ch;margin-bottom:44px;}
   .section-head h2{font-size:29px;}
-  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:15.5px;}
-  .band{background:var(--bg-band);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .section-head p{color:var(--tx3);margin-top:12px;font-size:15.5px;}
+  .band{background:var(--panel);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
 
   .flow{display:flex;overflow-x:auto;gap:0;padding-bottom:6px;scrollbar-width:thin;}
   .flow-step{
     flex:0 0 auto;width:196px;padding:20px 18px 22px;position:relative;
-    border-left:1px solid var(--line);
+    border-left:1px solid var(--bd);
   }
   .flow-step:first-child{border-left:none;}
-  .flow-num{
-    font-family:'IBM Plex Mono';font-size:12px;color:var(--coral);margin-bottom:14px;
-  }
+  .flow-num{font-family:'JetBrains Mono';font-size:12px;font-weight:600;color:var(--acc-tx);margin-bottom:14px;}
   .flow-step h3{font-size:16.5px;margin-bottom:8px;}
-  .flow-step p{font-size:13.5px;color:var(--ink-mute);margin:0;line-height:1.5;}
+  .flow-step p{font-size:13.5px;color:var(--tx4);margin:0;line-height:1.5;}
 
   /* ---------- verification section ---------- */
   .verify-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
-  .check-list{border-top:1px solid var(--line);}
-  .check-row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);}
-  .check-idx{font-family:'IBM Plex Mono';font-size:13px;color:var(--ink-mute);padding-top:2px;flex-shrink:0;width:20px;}
+  .check-list{border-top:1px solid var(--bd);}
+  .check-row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--bd);}
+  .check-idx{font-family:'JetBrains Mono';font-size:13px;font-weight:600;color:var(--acc-tx);padding-top:2px;flex-shrink:0;width:20px;}
   .check-row h3{font-size:16px;margin-bottom:6px;}
-  .check-row p{font-size:14px;color:var(--ink-mute);margin:0;}
+  .check-row p{font-size:14px;color:var(--tx4);margin:0;}
 
   /* ---------- categories ---------- */
-  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
-  .cat{background:var(--bg-mid);padding:26px 20px;min-height:128px;display:flex;flex-direction:column;justify-content:space-between;}
-  .cat-status{font-size:11px;font-family:'IBM Plex Mono';letter-spacing:0.04em;}
-  .cat-status.live{color:var(--gold);}
-  .cat-status.soon{color:var(--ink-mute);}
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:var(--radius);overflow:hidden;}
+  .cat{background:var(--inset);padding:26px 20px;min-height:112px;display:flex;flex-direction:column;justify-content:space-between;}
+  .cat.soon h3{color:var(--tx3);font-weight:700;}
+  .cat-status{font-size:11px;font-weight:600;font-family:'JetBrains Mono';letter-spacing:0.06em;}
+  .cat-status.live{color:var(--acc-tx);}
+  .cat-status.soon{color:var(--tx4);}
   .cat h3{font-size:16px;margin-top:14px;}
 
   /* ---------- supply categories (what buyers actually source) ---------- */
   .supply-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
   .supply-card{
-    background:var(--bg-mid);border:1px solid var(--line);border-radius:12px;
+    background:var(--panel);border:1px solid var(--bd);border-radius:12px;
     padding:20px 16px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;
   }
   .supply-icon{
-    width:38px;height:38px;border-radius:9px;background:var(--coral-soft);
+    width:38px;height:38px;border-radius:10px;background:var(--acc-soft);
     display:flex;align-items:center;justify-content:center;flex-shrink:0;
   }
   .supply-icon svg{width:20px;height:20px;}
-  .supply-card span{font-size:14px;color:var(--ink-soft);line-height:1.35;}
+  .supply-card span{font-size:14px;color:var(--tx2);line-height:1.35;}
 
   /* ---------- product mockups (in-app previews, CSS-only) ---------- */
   .mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .mock-card{
-    background:var(--bg-mid);border:1px solid var(--line);border-radius:16px;
+    background:var(--panel);border:1px solid var(--bd);border-radius:16px;
     overflow:hidden;display:flex;flex-direction:column;
   }
   .mock-bar{
     display:flex;align-items:center;gap:6px;padding:11px 14px;
-    border-bottom:1px solid var(--line);background:var(--bg-band);
+    border-bottom:1px solid var(--bd);background:var(--inset);
   }
-  .mock-dot{width:7px;height:7px;border-radius:50%;background:var(--line);}
-  .mock-title{font-family:'IBM Plex Mono';font-size:11px;color:var(--ink-mute);margin-left:4px;}
+  .mock-dot{width:7px;height:7px;border-radius:50%;background:var(--bd2);}
+  .mock-title{font-family:'JetBrains Mono';font-size:11px;color:var(--tx4);margin-left:4px;}
   .mock-body{padding:18px 16px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
   .mock-field{display:flex;flex-direction:column;gap:4px;}
-  .mock-field label{font-size:10px;font-family:'IBM Plex Mono';color:var(--ink-mute);letter-spacing:0.03em;}
+  .mock-field label{font-size:10px;font-family:'JetBrains Mono';color:var(--tx4);letter-spacing:0.03em;}
+  .mock-field label i{font-style:normal;color:var(--acc-tx);margin-left:6px;}
   .mock-field .val{
-    background:var(--bg-deep);border:1px solid var(--line);border-radius:7px;
-    padding:8px 10px;font-size:13px;color:var(--ink);
+    background:var(--inset);border:1px solid var(--bd);border-radius:8px;
+    padding:8px 10px;font-size:13px;color:var(--tx);
   }
   .mock-btn{
-    margin-top:4px;align-self:flex-start;background:var(--coral);color:#fff;
-    font-size:12px;font-weight:600;font-family:'IBM Plex Sans';border-radius:8px;padding:8px 16px;
+    margin-top:4px;align-self:flex-start;background:var(--acc);color:#fff;
+    font-size:12px;font-weight:700;border-radius:8px;padding:8px 16px;
   }
   .mock-table{display:flex;flex-direction:column;gap:6px;font-size:11.5px;}
   .mock-row{
     display:grid;grid-template-columns:1.1fr 0.8fr 0.7fr 0.8fr;gap:6px;
-    padding:8px 9px;border-radius:7px;background:var(--bg-deep);border:1px solid var(--line);
+    padding:8px 9px;border-radius:8px;background:var(--inset);border:1px solid var(--bd);
     align-items:center;
   }
-  .mock-row.head{background:transparent;border:none;color:var(--ink-mute);font-family:'IBM Plex Mono';font-size:10px;padding:0 9px;}
-  .mock-row.best{border-color:var(--coral);}
-  .mock-row .co{color:var(--ink);font-weight:500;}
-  .mock-row .price{font-family:'IBM Plex Mono';color:var(--gold);}
+  .mock-row.head{background:transparent;border:none;color:var(--tx4);font-family:'JetBrains Mono';font-size:10px;padding:0 9px;}
+  .mock-row.best{border-color:var(--acc);}
+  .mock-row .co{color:var(--tx);font-weight:600;}
+  .mock-row .price{font-family:'JetBrains Mono';color:var(--tx);font-weight:600;}
   .mock-tag{
-    display:inline-block;margin-top:2px;font-size:9.5px;font-family:'IBM Plex Mono';
-    color:var(--coral);background:var(--coral-soft);border-radius:5px;padding:2px 6px;align-self:flex-start;
+    display:inline-block;margin-top:2px;font-size:9.5px;font-family:'JetBrains Mono';
+    color:var(--acc-tx);background:var(--acc-soft);border-radius:5px;padding:2px 6px;align-self:flex-start;
   }
   .mock-lpo-head{display:flex;justify-content:space-between;align-items:flex-start;}
-  .mock-lpo-id{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--ink);}
+  .mock-lpo-id{font-family:'JetBrains Mono';font-size:12.5px;color:var(--tx);}
   .mock-status{
-    font-family:'IBM Plex Mono';font-size:10px;color:var(--gold);
-    background:rgba(240,180,41,0.12);border-radius:6px;padding:3px 8px;
+    font-family:'JetBrains Mono';font-size:10px;font-weight:600;color:var(--ok);
+    background:var(--ok-soft);border-radius:6px;padding:3px 8px;
   }
-  .mock-divider{border-top:1px solid var(--line);margin:2px 0;}
-  .mock-note{font-size:12px;color:var(--ink-mute);margin-top:16px;}
+  .mock-divider{border-top:1px solid var(--bd);margin:2px 0;}
+  .mock-note{font-size:12px;color:var(--tx4);margin-top:16px;}
 
   /* ---------- contact / WhatsApp ---------- */
   .contact-link{
-    display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink-soft);
+    display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--tx3);
     text-decoration:none;padding:0 4px;
   }
-  .contact-link:hover{color:var(--ink);}
+  .contact-link:hover{color:var(--tx);}
   .contact-link svg{width:17px;height:17px;flex-shrink:0;}
-  .foot-contact{font-size:13.5px;color:var(--ink-mute);display:flex;align-items:center;gap:7px;text-decoration:none;}
-  .foot-contact:hover{color:var(--ink-soft);}
+  .foot-contact{font-size:13.5px;color:var(--tx4);display:flex;align-items:center;gap:7px;text-decoration:none;}
+  .foot-contact:hover{color:var(--tx2);}
   .foot-contact svg{width:15px;height:15px;flex-shrink:0;}
   .wa-fab{
-    display:none;position:fixed;right:18px;bottom:18px;z-index:50;
+    display:none;position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom, 0px));z-index:50;
     width:56px;height:56px;border-radius:50%;background:#25D366;
     align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.35);
     text-decoration:none;
@@ -232,21 +217,21 @@
   .role-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;}
   .role-card{
     border-radius:20px;padding:36px;position:relative;overflow:hidden;
-    border:1px solid var(--line);
+    border:1px solid var(--bd);
   }
-  .role-card.buyer{background:linear-gradient(160deg,var(--bg-mid),var(--coral-soft));}
-  .role-card.supplier{background:var(--bg-mid);}
+  .role-card.buyer{background:linear-gradient(160deg,var(--panel),var(--acc-soft));}
+  .role-card.supplier{background:var(--panel);}
   .role-card h3{font-size:23px;margin-bottom:12px;}
-  .role-card p{color:var(--ink-soft);font-size:14.5px;margin:0 0 26px;max-width:36ch;}
-  .role-tag{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--ink-mute);margin-bottom:16px;display:block;}
+  .role-card p{color:var(--tx3);font-size:14.5px;margin:0 0 26px;max-width:36ch;}
+  .role-tag{font-family:'JetBrains Mono';font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:var(--tx4);margin-bottom:16px;display:block;}
 
   /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line-soft);padding:44px 0 40px;}
+  footer{border-top:1px solid var(--bd);padding:44px 0 40px;}
   .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;}
   .foot-links{display:flex;gap:24px;flex-wrap:wrap;}
-  .foot-links a{font-size:13.5px;color:var(--ink-mute);text-decoration:none;}
-  .foot-links a:hover{color:var(--ink-soft);}
-  .foot-legal{font-size:13px;color:var(--ink-mute);margin-top:22px;}
+  .foot-links a{font-size:13.5px;color:var(--tx4);text-decoration:none;}
+  .foot-links a:hover{color:var(--tx2);}
+  .foot-legal{font-size:13px;color:var(--tx4);margin-top:22px;}
 
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr;gap:40px;}
@@ -260,8 +245,6 @@
     .role-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
     .contact-link{display:none;}
-    .stats{height:156px;display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:18px 24px;}
-    .stat-num{font-size:26px;}
     .wa-fab{display:flex;}
   }
   @media (max-width:420px){
@@ -274,15 +257,16 @@
   }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <span class="brand-mark">B</span>
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" role="img" aria-label="Biddex"><rect x="1" y="1" width="38" height="38" rx="11" style="fill:var(--inset);stroke:var(--bd);" stroke-width="1.5"/><path d="M10 10V30M10 10H18a4.5 4.5 0 0 1 0 9H10M10 19H19a5.5 5.5 0 0 1 0 11H10" style="stroke:var(--acc);" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.5 25l5 5M31.5 25l-5 5" style="stroke:var(--tx4);" stroke-width="2.4" stroke-linecap="round"/></svg>
       <span>
         <span class="brand-word" style="display:block;">Biddex</span>
-        <span class="brand-tag">Bahrain B2B procurement</span>
+        <span class="brand-tag">BAHRAIN B2B PROCUREMENT</span>
       </span>
     </a>
     <nav class="nav-links">
@@ -320,24 +304,16 @@
       <div class="seal-wrap">
         <div class="seal">
           <svg viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="92" fill="none" stroke="var(--line)" stroke-width="1"/>
-            <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="92" fill="none" stroke="var(--bd2)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="70" fill="none" stroke="var(--bd2)" stroke-width="1"/>
             <path id="ringPath" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none"/>
             <text class="seal-ring-text">
               <textPath href="#ringPath" startOffset="0%">VERIFIED BY BIDDEX &#8226; CR / TRADE LICENSE CHECKED &#8226; VERIFIED BY BIDDEX &#8226; CR / TRADE LICENSE CHECKED &#8226; </textPath>
             </text>
-            <circle cx="100" cy="100" r="52" fill="none" stroke="var(--coral)" stroke-width="1.4"/>
-            <path d="M78 101 L94 117 L124 84" fill="none" stroke="var(--coral)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="100" cy="100" r="52" fill="none" stroke="var(--acc)" stroke-width="1.4"/>
+            <path d="M78 101 L94 117 L124 84" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="stats" id="live-stats" aria-hidden="true">
-        <div class="stat" data-stat="suppliers"><div class="stat-num">0</div><div class="stat-label">Verified suppliers</div></div>
-        <div class="stat" data-stat="buyers"><div class="stat-num">0</div><div class="stat-label">Verified buyers</div></div>
-        <div class="stat" data-stat="rfqs"><div class="stat-num">0</div><div class="stat-label">RFQs published</div></div>
-        <div class="stat" data-stat="quotes"><div class="stat-num">0</div><div class="stat-label">Quotes submitted</div></div>
       </div>
     </div>
   </section>
@@ -498,31 +474,31 @@
       </div>
       <div class="supply-grid">
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 8.5c2 2 2.3 5.4.5 7.5-1.8 2-4.8 2-6.7.2L6 13c-1.3-1.3-1.3-3.4 0-4.7 1.3-1.3 3.4-1.3 4.7 0"/><circle cx="17" cy="7" r="2.3"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 8.5c2 2 2.3 5.4.5 7.5-1.8 2-4.8 2-6.7.2L6 13c-1.3-1.3-1.3-3.4 0-4.7 1.3-1.3 3.4-1.3 4.7 0"/><circle cx="17" cy="7" r="2.3"/></svg></div>
           <span>Meat &amp; Poultry</span>
         </div>
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5v3.2L16 9v10a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 8 19V9l1.5-2.8V3Z"/><path d="M8 12h8"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5v3.2L16 9v10a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 8 19V9l1.5-2.8V3Z"/><path d="M8 12h8"/></svg></div>
           <span>Dairy</span>
         </div>
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4.5 0-7-3.5-7-7.8C5 8.6 8.3 5 12 5"/><path d="M12 21c4.5 0 7-3.5 7-7.8C19 8.6 15.7 5 12 5"/><path d="M12 5V3"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4.5 0-7-3.5-7-7.8C5 8.6 8.3 5 12 5"/><path d="M12 21c4.5 0 7-3.5 7-7.8C19 8.6 15.7 5 12 5"/><path d="M12 5V3"/></svg></div>
           <span>Fruits &amp; Vegetables</span>
         </div>
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l1.2 4.5c.7 2.8-1.4 5.5-4.3 6.2v3.8h-1.8v-3.8c-2.9-.7-5-3.4-4.3-6.2L8 4Z"/><path d="M9 4V2.4M15 4V2.4"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l1.2 4.5c.7 2.8-1.4 5.5-4.3 6.2v3.8h-1.8v-3.8c-2.9-.7-5-3.4-4.3-6.2L8 4Z"/><path d="M9 4V2.4M15 4V2.4"/></svg></div>
           <span>Dry Goods</span>
         </div>
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3.5l1.6 2.4c.5.8.9 1.7.9 2.7V19a2 2 0 0 1-2 2H8.5a2 2 0 0 1-2-2v-7.4c0-1 .3-1.9.9-2.7L9 6.5V3Z"/><path d="M7 14h10"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3.5l1.6 2.4c.5.8.9 1.7.9 2.7V19a2 2 0 0 1-2 2H8.5a2 2 0 0 1-2-2v-7.4c0-1 .3-1.9.9-2.7L9 6.5V3Z"/><path d="M7 14h10"/></svg></div>
           <span>Beverages</span>
         </div>
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5 12 5l8 3.5v7L12 19l-8-3.5v-7Z"/><path d="M4 8.5 12 12l8-3.5M12 12v7"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5 12 5l8 3.5v7L12 19l-8-3.5v-7Z"/><path d="M4 8.5 12 12l8-3.5M12 12v7"/></svg></div>
           <span>Packaging</span>
         </div>
         <div class="supply-card">
-          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h3v2.4l1.5.9c.6.4 1 1 1 1.8V19a1.6 1.6 0 0 1-1.6 1.6h-5A1.6 1.6 0 0 1 8.4 19V8.1c0-.8.4-1.4 1-1.8L11 5.4V3Z"/><path d="M8.4 11h8.1M17 3.5h2.5M18.2 2.3v2.4"/></svg></div>
+          <div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc-tx)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h3v2.4l1.5.9c.6.4 1 1 1 1.8V19a1.6 1.6 0 0 1-1.6 1.6h-5A1.6 1.6 0 0 1 8.4 19V8.1c0-.8.4-1.4 1-1.8L11 5.4V3Z"/><path d="M8.4 11h8.1M17 3.5h2.5M18.2 2.3v2.4"/></svg></div>
           <span>Chemicals &amp; Cleaning</span>
         </div>
       </div>
@@ -557,7 +533,7 @@
   <div class="wrap">
     <div class="foot-row">
       <a class="brand" href="#top">
-        <span class="brand-mark" style="width:28px;height:28px;font-size:15px;">B</span>
+        <svg class="brand-mark" style="width:30px;height:30px;" viewBox="0 0 40 40" fill="none" role="img" aria-label="Biddex"><rect x="1" y="1" width="38" height="38" rx="11" style="fill:var(--inset);stroke:var(--bd);" stroke-width="1.5"/><path d="M10 10V30M10 10H18a4.5 4.5 0 0 1 0 9H10M10 19H19a5.5 5.5 0 0 1 0 11H10" style="stroke:var(--acc);" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.5 25l5 5M31.5 25l-5 5" style="stroke:var(--tx4);" stroke-width="2.4" stroke-linecap="round"/></svg>
         <span class="brand-word" style="font-size:16px;">Biddex</span>
       </a>
       <div class="foot-links">
@@ -575,62 +551,6 @@
     <p class="foot-legal">© 2026 Biddex. All rights reserved.</p>
   </div>
 </footer>
-
-<script>
-// Live metrics: one request on load. A metric the API returns as null (below its display threshold) is
-// hidden; if none is left, or the request fails or takes too long, the whole block is removed and the hero
-// gets its original bottom padding back.
-(function () {
-  var API = 'https://b2b-procurement-backend-production.up.railway.app/api/public/stats';
-  var box = document.getElementById('live-stats');
-  if (!box) return;
-  var hero = box.closest('.hero');
-  function removeBlock() { if (hero) hero.classList.add('no-stats'); }
-  if (!window.fetch) { removeBlock(); return; }
-  var ctrl = window.AbortController ? new AbortController() : null;
-  var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
-
-  fetch(API, { credentials: 'omit', signal: ctrl ? ctrl.signal : undefined })
-    .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
-    .then(function (data) {
-      clearTimeout(timer);
-      var items = box.querySelectorAll('[data-stat]');
-      var shown = [];
-      for (var i = 0; i < items.length; i++) {
-        var v = data ? data[items[i].getAttribute('data-stat')] : null;
-        if (typeof v === 'number' && isFinite(v) && v >= 0) shown.push({ el: items[i].querySelector('.stat-num'), value: Math.round(v) });
-        else items[i].hidden = true;
-      }
-      if (!shown.length) { removeBlock(); return; }
-      for (var j = 0; j < shown.length; j++) {
-        // reserve the final width, so the number doesn't nudge its neighbours while it counts up
-        shown[j].el.style.minWidth = format(shown[j].value).length + 'ch';
-        countUp(shown[j].el, shown[j].value);
-      }
-      box.setAttribute('aria-hidden', 'false');
-      box.classList.add('ready');
-    })
-    .catch(function () { clearTimeout(timer); removeBlock(); });
-
-  function format(n) { return n.toLocaleString('en-US'); }
-
-  function countUp(el, target) {
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { el.textContent = format(target); return; }
-    var start = null, duration = 1400, done = false;
-    function step(now) {
-      if (done) return;
-      if (start === null) start = now;
-      var p = Math.min(1, (now - start) / duration);
-      el.textContent = format(Math.round(target * (1 - Math.pow(1 - p, 3)))); // ease-out
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-    // animation frames pause in a background tab: make sure the final number is there regardless
-    setTimeout(function () { done = true; el.textContent = format(target); }, duration + 300);
-  }
-})();
-</script>
 
 <a class="wa-fab" href="https://wa.me/97333327347" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.1 2.9 13.4 2.9 3.9c0-.6.4-1 1-1H7.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
