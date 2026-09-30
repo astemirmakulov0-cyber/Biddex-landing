@@ -10,59 +10,58 @@
 <meta property="og:url" content="https://biddex.online/">
 <meta property="og:title" content="Biddex — Verified B2B procurement for Bahrain">
 <meta property="og:description" content="Send one request. Compare priced quotes from verified suppliers in Bahrain. Every company is checked by hand before its first quote.">
-<meta property="og:image" content="https://biddex.online/og-image.png">
+<meta property="og:image" content="https://biddex.online/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Biddex — send one request, compare priced quotes from verified suppliers">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Biddex — Verified B2B procurement for Bahrain">
 <meta name="twitter:description" content="Send one request. Compare priced quotes from verified suppliers in Bahrain.">
-<meta name="twitter:image" content="https://biddex.online/og-image.png">
-<meta name="theme-color" content="#F6F8FC" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0A0E17" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="twitter:image" content="https://biddex.online/og-image.png?v=2">
+<meta name="theme-color" content="#FAF7F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=2">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Tokens mirror the app (Biddex-frontend): dark is the default here, light follows prefers-color-scheme. */
+  /* Tokens mirror the app "Mix 1" (PROJECT_CONTEXT 6.7): light is the default, dark follows prefers-color-scheme.
+     Accent = buyer teal; supplier blocks (.sup) switch to the supplier amber. */
   :root{
-    color-scheme:dark;
-    --acc:#BE123C;           /* brand crimson: fills and buttons */
-    --acc-tx:#FB7185;        /* crimson for small text on dark, where #BE123C is too dim */
-    --acc-soft:rgba(190,18,60,0.16);
-    --bg:#0A0E17; --panel:#111826; --inset:#0D1320; --sunken:#1B2434;
-    --bd:#1E293B; --bd2:#334155;
-    --tx:#F1F5F9; --tx2:#CBD5E1; --tx3:#94A3B8; --tx4:#64748B;
-    --ok:#4ADE80; --ok-soft:rgba(74,222,128,0.12);
-    --radius:14px;
-    font-family:'Inter', system-ui, sans-serif;
+    color-scheme:light;
+    --bg:#FAF7F2; --panel:#FFFFFF; --tx:#1B1A17; --tx2:#6B665E; --line:#ECE6DC;
+    --acc:#0F766E; --acc-soft:#E3F2EF; --acc-ink:#0B5A54; --on-acc:#FFFFFF; --logo-base:#1B1A17;
+    --inset:#F5F1EA; --sunken:#EFE9E0; --bd2:#D9D1C4;
+    --bd:var(--line); --tx3:var(--tx2); --tx4:var(--tx2); --tx-body:#4A463F;
+    --acc-tx:var(--acc-ink); --ok:var(--acc-ink); --ok-soft:var(--acc-soft);
+    --radius:16px;
+    font-family:'Readex Pro', system-ui, sans-serif;
   }
-  @media (prefers-color-scheme: light){
+  .sup{--acc:#B45309; --acc-soft:#FCEFD9; --acc-ink:#8A4A0B; --on-acc:#FFFFFF;}
+  @media (prefers-color-scheme: dark){
     :root{
-      color-scheme:light;
-      --acc-tx:#BE123C; --acc-soft:rgba(190,18,60,0.1);
-      --bg:#F6F8FC; --panel:#FFFFFF; --inset:#F8FAFC; --sunken:#EEF2F8;
-      --bd:#E4E9F1; --bd2:#CBD5E1;
-      --tx:#0B1220; --tx2:#334155; --tx3:#475569; --tx4:#64748B;
-      --ok:#15803D; --ok-soft:#DCFCE7;
+      color-scheme:dark;
+      --bg:#141311; --panel:#1D1B18; --tx:#F3EFE8; --tx2:#A59E92; --line:#2E2A25;
+      --acc:#34B3A2; --acc-soft:#16312D; --acc-ink:#8FE0D3; --on-acc:#0B1F1C; --logo-base:#FAF7F2;
+      --inset:#181614; --sunken:#26221E; --bd2:#3D3730; --tx-body:#CFC8BC;
     }
+    .sup{--acc:#F0A24A; --acc-soft:#3A2A14; --acc-ink:#F6C98A; --on-acc:#2A1805;}
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
     background:var(--bg);
-    color:var(--tx2);
+    color:var(--tx-body);
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
-  h1,h2,h3{font-family:'Inter', sans-serif;font-weight:800;color:var(--tx);margin:0;letter-spacing:-0.02em;}
-  .mono{font-family:'JetBrains Mono', ui-monospace, monospace;}
+  h1,h2,h3{font-family:'Bricolage Grotesque','Readex Pro',sans-serif;font-weight:800;color:var(--tx);margin:0;letter-spacing:-0.02em;}
+  .mono{font-variant-numeric:tabular-nums;}
 
   /* ---------- nav ---------- */
   header{
@@ -74,17 +73,20 @@
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
   .brand-mark{width:36px;height:36px;flex-shrink:0;}
-  .brand-word{font-weight:800;font-size:18px;color:var(--tx);letter-spacing:-0.01em;}
-  .brand-tag{font-family:'JetBrains Mono', monospace;font-size:9.5px;font-weight:600;letter-spacing:0.08em;color:var(--tx4);margin-top:1px;}
+  .brand-word{font-family:'Bricolage Grotesque','Readex Pro',sans-serif;font-weight:800;font-size:18px;color:var(--tx);letter-spacing:-0.01em;}
+  .brand-tag{font-family:inherit;font-variant-numeric:tabular-nums;font-size:9.5px;font-weight:600;letter-spacing:0.08em;color:var(--tx4);margin-top:1px;}
   .nav-links{display:flex;align-items:center;gap:28px;}
   .nav-links a{font-size:14px;color:var(--tx3);text-decoration:none;}
   .nav-links a:hover{color:var(--tx);}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;
-    border-radius:12px;font-size:14px;font-weight:700;font-family:'Inter';
+    border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;
     padding:11px 20px;text-decoration:none;border:1px solid transparent;cursor:pointer;
   }
-  .btn-coral{background:var(--acc);color:#fff;}
+  .btn-coral{background:var(--acc);color:var(--on-acc);}
+  .btn-sup{background:var(--acc);color:var(--on-acc);}
+  .btn-sup:hover{filter:brightness(1.1);}
+  .btn-ghost.sup{border-color:var(--acc);color:var(--acc-ink);}
   .btn-coral:hover{filter:brightness(1.12);}
   .btn-ghost{border-color:var(--bd2);color:var(--tx);}
   .btn-ghost:hover{border-color:var(--tx3);}
@@ -93,13 +95,13 @@
   .hero{
     padding:76px 0 88px;
     background:
-      radial-gradient(600px 300px at 88% -8%, rgba(190,18,60,0.20), transparent 60%),
-      radial-gradient(500px 260px at 10% 110%, rgba(190,18,60,0.07), transparent 60%);
+      radial-gradient(600px 300px at 88% -8%, color-mix(in srgb, var(--acc) 18%, transparent), transparent 60%),
+      radial-gradient(500px 260px at 10% 110%, color-mix(in srgb, var(--acc) 7%, transparent), transparent 60%);
   }
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.8fr;gap:56px;align-items:center;}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;
-    font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--acc-tx);font-family:'JetBrains Mono';
+    font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--acc-tx);font-family:inherit;font-variant-numeric:tabular-nums;
     margin-bottom:22px;
   }
   .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc-tx);}
@@ -112,7 +114,7 @@
   .seal-wrap{display:flex;justify-content:center;}
   .seal{width:280px;height:280px;position:relative;}
   .seal svg{width:100%;height:100%;}
-  .seal-ring-text{font-family:'JetBrains Mono';font-size:10.4px;letter-spacing:0.14em;fill:var(--tx3);}
+  .seal-ring-text{font-family:inherit;font-variant-numeric:tabular-nums;font-size:10.4px;letter-spacing:0.14em;fill:var(--tx3);}
 
   /* ---------- flow section ---------- */
   section{padding:70px 0;}
@@ -127,7 +129,7 @@
     border-left:1px solid var(--bd);
   }
   .flow-step:first-child{border-left:none;}
-  .flow-num{font-family:'JetBrains Mono';font-size:12px;font-weight:600;color:var(--acc-tx);margin-bottom:14px;}
+  .flow-num{font-family:inherit;font-variant-numeric:tabular-nums;font-size:12px;font-weight:600;color:var(--acc-tx);margin-bottom:14px;}
   .flow-step h3{font-size:16.5px;margin-bottom:8px;}
   .flow-step p{font-size:13.5px;color:var(--tx4);margin:0;line-height:1.5;}
 
@@ -135,7 +137,7 @@
   .verify-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
   .check-list{border-top:1px solid var(--bd);}
   .check-row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--bd);}
-  .check-idx{font-family:'JetBrains Mono';font-size:13px;font-weight:600;color:var(--acc-tx);padding-top:2px;flex-shrink:0;width:20px;}
+  .check-idx{font-family:inherit;font-variant-numeric:tabular-nums;font-size:13px;font-weight:600;color:var(--acc-tx);padding-top:2px;flex-shrink:0;width:20px;}
   .check-row h3{font-size:16px;margin-bottom:6px;}
   .check-row p{font-size:14px;color:var(--tx4);margin:0;}
 
@@ -143,7 +145,7 @@
   .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:var(--radius);overflow:hidden;}
   .cat{background:var(--inset);padding:26px 20px;min-height:112px;display:flex;flex-direction:column;justify-content:space-between;}
   .cat.soon h3{color:var(--tx3);font-weight:700;}
-  .cat-status{font-size:11px;font-weight:600;font-family:'JetBrains Mono';letter-spacing:0.06em;}
+  .cat-status{font-size:11px;font-weight:600;font-family:inherit;font-variant-numeric:tabular-nums;letter-spacing:0.06em;}
   .cat-status.live{color:var(--acc-tx);}
   .cat-status.soon{color:var(--tx4);}
   .cat h3{font-size:16px;margin-top:14px;}
@@ -172,17 +174,17 @@
     border-bottom:1px solid var(--bd);background:var(--inset);
   }
   .mock-dot{width:7px;height:7px;border-radius:50%;background:var(--bd2);}
-  .mock-title{font-family:'JetBrains Mono';font-size:11px;color:var(--tx4);margin-left:4px;}
+  .mock-title{font-family:inherit;font-variant-numeric:tabular-nums;font-size:11px;color:var(--tx4);margin-left:4px;}
   .mock-body{padding:18px 16px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
   .mock-field{display:flex;flex-direction:column;gap:4px;}
-  .mock-field label{font-size:10px;font-family:'JetBrains Mono';color:var(--tx4);letter-spacing:0.03em;}
+  .mock-field label{font-size:10px;font-family:inherit;font-variant-numeric:tabular-nums;color:var(--tx4);letter-spacing:0.03em;}
   .mock-field label i{font-style:normal;color:var(--acc-tx);margin-left:6px;}
   .mock-field .val{
     background:var(--inset);border:1px solid var(--bd);border-radius:8px;
     padding:8px 10px;font-size:13px;color:var(--tx);
   }
   .mock-btn{
-    margin-top:4px;align-self:flex-start;background:var(--acc);color:#fff;
+    margin-top:4px;align-self:flex-start;background:var(--acc);color:var(--on-acc);
     font-size:12px;font-weight:700;border-radius:8px;padding:8px 16px;
   }
   .mock-table{display:flex;flex-direction:column;gap:6px;font-size:11.5px;}
@@ -191,18 +193,18 @@
     padding:8px 9px;border-radius:8px;background:var(--inset);border:1px solid var(--bd);
     align-items:center;
   }
-  .mock-row.head{background:transparent;border:none;color:var(--tx4);font-family:'JetBrains Mono';font-size:10px;padding:0 9px;}
+  .mock-row.head{background:transparent;border:none;color:var(--tx4);font-family:inherit;font-variant-numeric:tabular-nums;font-size:10px;padding:0 9px;white-space:nowrap;letter-spacing:0;}
   .mock-row.best{border-color:var(--acc);}
   .mock-row .co{color:var(--tx);font-weight:600;}
-  .mock-row .price{font-family:'JetBrains Mono';color:var(--tx);font-weight:600;}
+  .mock-row .price{font-family:inherit;font-variant-numeric:tabular-nums;color:var(--tx);font-weight:600;}
   .mock-tag{
-    display:inline-block;margin-top:2px;font-size:9.5px;font-family:'JetBrains Mono';
+    display:inline-block;margin-top:2px;font-size:9.5px;font-family:inherit;font-variant-numeric:tabular-nums;
     color:var(--acc-tx);background:var(--acc-soft);border-radius:5px;padding:2px 6px;align-self:flex-start;
   }
   .mock-lpo-head{display:flex;justify-content:space-between;align-items:flex-start;}
-  .mock-lpo-id{font-family:'JetBrains Mono';font-size:12.5px;color:var(--tx);}
+  .mock-lpo-id{font-family:inherit;font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--tx);}
   .mock-status{
-    font-family:'JetBrains Mono';font-size:10px;font-weight:600;color:var(--ok);
+    font-family:inherit;font-variant-numeric:tabular-nums;font-size:10px;font-weight:600;color:var(--ok);
     background:var(--ok-soft);border-radius:6px;padding:3px 8px;
   }
   .mock-divider{border-top:1px solid var(--bd);margin:2px 0;}
@@ -233,10 +235,11 @@
     border:1px solid var(--bd);
   }
   .role-card.buyer{background:linear-gradient(160deg,var(--panel),var(--acc-soft));}
-  .role-card.supplier{background:var(--panel);}
+  .role-card.supplier{background:linear-gradient(160deg,var(--panel),var(--acc-soft));border-color:color-mix(in srgb, var(--acc) 35%, var(--bd));}
+  .role-card.supplier .role-tag{color:var(--acc-ink);}
   .role-card h3{font-size:23px;margin-bottom:12px;}
   .role-card p{color:var(--tx3);font-size:14.5px;margin:0 0 26px;max-width:36ch;}
-  .role-tag{font-family:'JetBrains Mono';font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:var(--tx4);margin-bottom:16px;display:block;}
+  .role-tag{font-family:inherit;font-variant-numeric:tabular-nums;font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:var(--tx4);margin-bottom:16px;display:block;}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--bd);padding:44px 0 40px;}
@@ -283,7 +286,6 @@
   @media (max-width:420px){
     .cat-grid{grid-template-columns:1fr;}
     .supply-grid{grid-template-columns:1fr;}
-    .mock-row{grid-template-columns:1fr 1fr;row-gap:2px;}
   }
   /* Touch, as in the app: no 300ms delay, no grey flash on tap, pressed feedback on touch screens only. */
   body{-webkit-tap-highlight-color:transparent;padding-left:env(safe-area-inset-left, 0px);padding-right:env(safe-area-inset-right, 0px);}
@@ -303,7 +305,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" role="img" aria-label="Biddex"><rect x="1" y="1" width="38" height="38" rx="11" style="fill:var(--inset);stroke:var(--bd);" stroke-width="1.5"/><path d="M10 10V30M10 10H18a4.5 4.5 0 0 1 0 9H10M10 19H19a5.5 5.5 0 0 1 0 11H10" style="stroke:var(--acc);" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.5 25l5 5M31.5 25l-5 5" style="stroke:var(--tx4);" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <svg class="brand-mark" viewBox="0 0 56 56" role="img" aria-label="Biddex"><rect x="8" y="5" width="11" height="46" rx="3" style="fill:var(--logo-base);"/><path d="M19 5 H31 a11.5 11.5 0 0 1 0 23 H19 Z" fill="#0F766E"/><path d="M19 28 H34 a11.5 11.5 0 0 1 0 23 H19 Z" fill="#E9A23B"/></svg>
       <span>
         <span class="brand-word" style="display:block;">Biddex</span>
         <span class="brand-tag">BAHRAIN B2B PROCUREMENT</span>
@@ -337,7 +339,7 @@
         <p class="lede">Post what you need, and suppliers across Bahrain send back priced quotes — you compare and award the one you want. <span class="hide-sm">Every supplier is checked by hand by the Biddex team against its trade license or CR certificate before it can quote.</span></p>
         <div class="hero-ctas">
           <a class="btn btn-coral" href="https://app.biddex.online/#/register?role=buyer">Post a request as a buyer</a>
-          <a class="btn btn-ghost" href="https://app.biddex.online/#/register?role=supplier">Get verified as a supplier</a>
+          <a class="btn btn-ghost sup" href="https://app.biddex.online/#/register?role=supplier">Get verified as a supplier</a>
         </div>
         <p class="hero-note">Register with your CR number; the Biddex team verifies your documents before your first quote or RFQ.</p>
       </div>
@@ -565,11 +567,11 @@
           <p>Publish the RFQ — a budget is optional — and compare quotes from suppliers our team has already verified.</p>
           <a class="btn btn-coral" href="https://app.biddex.online/#/register?role=buyer">Create a buyer account</a>
         </div>
-        <div class="role-card supplier">
+        <div class="role-card supplier sup">
           <span class="role-tag">FOR SUPPLIERS</span>
           <h3>Ready-made requests from restaurants — no cold calls</h3>
           <p>Get verified once, then quote on open RFQs from buyers who already need what you sell. Free during launch — no fees to join or start quoting.</p>
-          <a class="btn btn-ghost" href="https://app.biddex.online/#/register?role=supplier">Create a supplier account</a>
+          <a class="btn btn-sup" href="https://app.biddex.online/#/register?role=supplier">Create a supplier account</a>
         </div>
       </div>
     </div>
@@ -581,7 +583,7 @@
   <div class="wrap">
     <div class="foot-row">
       <a class="brand" href="#top">
-        <svg class="brand-mark" style="width:30px;height:30px;" viewBox="0 0 40 40" fill="none" role="img" aria-label="Biddex"><rect x="1" y="1" width="38" height="38" rx="11" style="fill:var(--inset);stroke:var(--bd);" stroke-width="1.5"/><path d="M10 10V30M10 10H18a4.5 4.5 0 0 1 0 9H10M10 19H19a5.5 5.5 0 0 1 0 11H10" style="stroke:var(--acc);" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.5 25l5 5M31.5 25l-5 5" style="stroke:var(--tx4);" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <svg class="brand-mark" style="width:30px;height:30px;" viewBox="0 0 56 56" role="img" aria-label="Biddex"><rect x="8" y="5" width="11" height="46" rx="3" style="fill:var(--logo-base);"/><path d="M19 5 H31 a11.5 11.5 0 0 1 0 23 H19 Z" fill="#0F766E"/><path d="M19 28 H34 a11.5 11.5 0 0 1 0 23 H19 Z" fill="#E9A23B"/></svg>
         <span class="brand-word" style="font-size:16px;">Biddex</span>
       </a>
       <div class="foot-links">
