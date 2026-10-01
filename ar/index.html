@@ -308,6 +308,8 @@
   }
   @media (max-width:420px){
     .nav .btn{padding:9px 9px;font-size:12.5px;}
+    .lang-switch{border-radius:8px;}
+    .lang-switch a{padding:7px 7px;font-size:12px;}
     .nav-right{gap:6px;}
     .nav-btns{gap:4px;}
     .cat-grid{grid-template-columns:1fr;}
@@ -335,8 +337,8 @@
   html[dir=rtl] .mock-title { margin-left:0; margin-right:4px; }
   html[dir=rtl] .mock-field label i { margin-left:0; margin-right:6px; }
   html[dir=rtl] .wa-fab { right:auto; left:18px; }
-  /* Arabic button labels are wider: on 360-370px phones the wordmark next to the logo gives way (as on the smallest screens) */
-  @media (max-width:370px){ html[dir=rtl] .nav .brand-word { display:none !important; } }
+  /* Arabic button labels are wider: on phones up to 370px the header buttons get tighter so the wordmark stays */
+  @media (max-width:370px){ html[dir=rtl] .nav .btn { padding:9px 7px; font-size:12px; } html[dir=rtl] .nav-right { gap:5px; } }
   html[dir=rtl] .mock-field .val, html[dir=rtl] .mock-row .price { font-variant-numeric:tabular-nums; }
 </style>
 </head>

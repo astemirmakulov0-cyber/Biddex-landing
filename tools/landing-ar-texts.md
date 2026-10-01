@@ -5,7 +5,7 @@ Generated from `tools/ar-texts.js` (edit the Arabic there, then run `node tools/
 ## Please check first
 
 - Rows whose *Source* says **new** were written for the landing and are not in the app: check these first. Rows with an app key reuse the app's Arabic word for word (or nearly), so the landing and the app say the same thing.
-- **Brand name:** written in Latin, "Biddex", as in the app's verification texts ("فريق Biddex"). (The e-mails use بيدكس — one spelling should be chosen for everything.)
+- **Brand name:** always written in Latin, "Biddex", also inside Arabic text — the same in the app, the e-mails and this page.
 - **Terms:** طلب التسعير (RFQ), عرض / العروض (bid, quote), ترسية / يُرسي (award), أمر شراء (LPO), طلبية (order), فاتورة (invoice), مشترٍ / مورّد (buyer / supplier), التوثيق (verification), المطاعم والمقاهي (Restaurants & Cafés) — see docs/PROJECT_CONTEXT.md §6.2.
 - **Numbers:** Latin digits, as in the app. Currency د.ب. Day counts use the correct number forms (يوم واحد، يومان، 3 أيام، 15 يومًا).
 - **Not translated on purpose:** the ring text around the check mark in the first screen ("VERIFIED BY BIDDEX • CR / TRADE LICENSE CHECKED", it is a graphic on a circular path where Arabic letters would not connect), the phone number, and the Terms / Privacy pages (English only; the footer links say "(بالإنجليزية)").
