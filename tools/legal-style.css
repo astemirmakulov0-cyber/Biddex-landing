@@ -1,0 +1,87 @@
+  :root {
+    color-scheme: light;
+    --paper: #FAF7F2; --ink: #1B1A17; --ink-soft: #6B665E; --rule: #ECE6DC;
+    --accent: #0B5A54; --pend-soft: #FCEFD9; --pend: #8A4A0B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --paper: #141311; --ink: #F3EFE8; --ink-soft: #A59E92; --rule: #2E2A25;
+      --accent: #8FE0D3; --pend-soft: #3A2A14; --pend: #F6C98A;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Readex Pro', system-ui, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  .kicker {
+    font-family: 'Readex Pro', system-ui, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  h1, h2 {
+    font-family: 'Bricolage Grotesque', 'Readex Pro', sans-serif;
+    letter-spacing: -0.02em;
+  }
+  h1 {
+    font-size: 34px;
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+  .updated {
+    font-family: 'Readex Pro', system-ui, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 40px 0 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 {
+    font-family: 'Readex Pro', system-ui, sans-serif;
+    font-size: 14px;
+    text-transform: none;
+    color: var(--ink-soft);
+    margin: 20px 0 8px;
+  }
+  p { margin: 0 0 16px; color: var(--ink); }
+  ul { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  a { color: var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 16px;
+    font-family: 'Readex Pro', system-ui, sans-serif;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th { color: var(--ink-soft); font-weight: 600; }
+  .contact {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Readex Pro', system-ui, sans-serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
