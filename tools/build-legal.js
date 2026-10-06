@@ -128,8 +128,8 @@ function validate() {
   }
   // what the privacy policy must say (processors, regions, retention, the real buttons) — see PROJECT_CONTEXT
   const pe = JSON.stringify(content.privacy.en), pa = JSON.stringify(content.privacy.ar);
-  for (const x of ['Neon', 'Railway', 'Resend', 'Sentry', 'Ohio', 'Virginia', 'California', 'Tokyo', 'European Union', '30 more days', 'Download my data', 'Delete account', 'English version prevails']) if (!pe.includes(x)) problems.push('privacy (en) must mention: ' + x);
-  for (const x of ['Neon', 'Railway', 'Resend', 'Sentry', 'أوهايو', 'فرجينيا', 'كاليفورنيا', 'طوكيو', 'الاتحاد الأوروبي', '30 يومًا', 'تنزيل بياناتي', 'حذف الحساب', 'النسخة الإنجليزية']) if (!pa.includes(x)) problems.push('privacy (ar) must mention: ' + x);
+  for (const x of ['Neon', 'Railway', 'Resend', 'Sentry', 'Ohio', 'Virginia', 'California', 'Tokyo', 'European Union', '30 more days', 'daily copy of the whole database', 'do not encrypt these copies', 'Download my data', 'Delete account', 'English version prevails']) if (!pe.includes(x)) problems.push('privacy (en) must mention: ' + x);
+  for (const x of ['Neon', 'Railway', 'Resend', 'Sentry', 'أوهايو', 'فرجينيا', 'كاليفورنيا', 'طوكيو', 'الاتحاد الأوروبي', '30 يومًا', 'نسخة يومية من قاعدة البيانات كاملة', 'ولا نشفّر هذه النسخ', 'تنزيل بياناتي', 'حذف الحساب', 'النسخة الإنجليزية']) if (!pa.includes(x)) problems.push('privacy (ar) must mention: ' + x);
   {
   }
 }
