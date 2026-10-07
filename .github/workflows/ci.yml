@@ -32,6 +32,10 @@ jobs:
         run: |
           node tools/build-ar.js
           git diff --exit-code -- ar/index.html tools/landing-ar-texts.md || { echo "::error::ar/index.html is out of date: run node tools/build-ar.js and commit"; exit 1; }
+      - name: Site tests and the Pages artifact (dry run of the deploy)
+        run: |
+          node test/build-site.test.js
+          node tools/build-site.js _site
 
   deploy:
     name: Deploy to GitHub Pages
