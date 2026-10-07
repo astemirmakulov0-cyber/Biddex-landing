@@ -1,6 +1,8 @@
 # CI of the landing: the legal pages (tools/build-legal.js) and the Arabic page (tools/build-ar.js) are generated from their
 # sources. This fails when a generated file is out of date, or when a legal text still has a placeholder or lacks a required
-# statement. No secrets, no network, nothing is published (GitHub Pages publishes the repository by itself).
+# statement. No secrets, no network. On a push to main the site is published to GitHub Pages by the `deploy` job, and only when
+# the checks are green (Settings → Pages → Source must be "GitHub Actions"). Only the files listed in tools/build-site.js are
+# published; the generated pages are published as committed (nothing is generated in the deploy).
 name: CI
 
 on:
@@ -30,3 +32,38 @@ jobs:
         run: |
           node tools/build-ar.js
           git diff --exit-code -- ar/index.html tools/landing-ar-texts.md || { echo "::error::ar/index.html is out of date: run node tools/build-ar.js and commit"; exit 1; }
+      - name: Site tests and the Pages artifact (dry run of the deploy)
+        run: |
+          node test/build-site.test.js
+          node tools/build-site.js _site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: generated-pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # a separate group: a newer deploy waits for the running one instead of cancelling it half way
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Build the site folder (only the site files, CNAME included)
+        run: node tools/build-site.js _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
