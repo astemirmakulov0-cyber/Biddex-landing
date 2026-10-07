@@ -9,7 +9,7 @@
 // {{email}}, {{whatsapp}} (a link), {{settings}} (link to the app's Settings) are filled in by the builder.
 
 // The day the pages are published (the day this version is pushed). Change it here, run the builder, commit.
-const EFFECTIVE_DATE = '2026-10-06';
+const EFFECTIVE_DATE = '2026-10-07';
 
 const privacy = {
   en: {
