@@ -1,0 +1,32 @@
+# CI of the landing: the legal pages (tools/build-legal.js) and the Arabic page (tools/build-ar.js) are generated from their
+# sources. This fails when a generated file is out of date, or when a legal text still has a placeholder or lacks a required
+# statement. No secrets, no network, nothing is published (GitHub Pages publishes the repository by itself).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  generated-pages:
+    name: Generated pages are up to date
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Terms of Service and Privacy Policy (EN + AR)
+        run: node tools/build-legal.js --check
+      - name: Arabic landing page
+        run: |
+          node tools/build-ar.js
+          git diff --exit-code -- ar/index.html tools/landing-ar-texts.md || { echo "::error::ar/index.html is out of date: run node tools/build-ar.js and commit"; exit 1; }
