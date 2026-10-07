@@ -101,6 +101,7 @@ const privacy = {
         '<strong>Deactivated accounts</strong> keep their data until deletion is requested.',
         '<strong>Backups:</strong> a second copy of uploaded files and a daily copy of the Biddex database are kept in separate private storage (US West, California). A file that changes or is deleted stays in the backup for 30 more days; each database copy is kept for 30 days. We do not encrypt these copies separately. Data you erase can therefore remain in these copies for up to 30 days.',
         '<strong>The providers’ own database backups and logs:</strong> kept according to the settings of the providers (Neon, Railway, Sentry).',
+        '<strong>Log of administrator actions:</strong> when a Biddex administrator acts on an account or an order (for example verifies or suspends a company, adds credits, resolves a dispute, opens a verification document), we record who did it, what, to which company and when. The log contains no passwords, access links or phone numbers. It is kept for as long as necessary for security, resolving disputes and meeting legal requirements, and it is not changed or deleted when a company deletes its account.',
         '<strong>Short-lived data:</strong> an e-mail verification link works for 24 hours, a password-reset link for one hour, an invitation link for at most 14 days.',
       ]],
 
@@ -202,6 +203,7 @@ const privacy = {
         '<strong>الحسابات المعطّلة</strong> تحتفظ ببياناتها إلى أن يُطلب الحذف.',
         '<strong>النسخ الاحتياطية:</strong> تُحفظ نسخة ثانية من الملفات المرفوعة ونسخة يومية من قاعدة بيانات Biddex في تخزين خاص منفصل (US West، كاليفورنيا). والملف الذي يتغير أو يُحذف يبقى في النسخة الاحتياطية 30 يومًا إضافيًا؛ وتُحفظ كل نسخة من قاعدة البيانات 30 يومًا. ولا نشفّر هذه النسخ بشكل منفصل. لذلك قد تبقى البيانات التي تمحوها في هذه النسخ حتى 30 يومًا.',
         '<strong>النسخ الاحتياطية الخاصة بالمزوّدين لقاعدة البيانات والسجلات:</strong> تُحفظ وفق إعدادات المزوّدين (Neon وRailway وSentry).',
+        '<strong>سجل إجراءات المسؤولين:</strong> عندما يتخذ مسؤول في Biddex إجراءً على حساب أو طلبية (مثل توثيق شركة أو تعليقها أو إضافة رصيد أو فض نزاع أو فتح مستند توثيق) نسجّل من فعل ذلك وماذا فعل وأي شركة يخصّ ومتى. لا يتضمن السجل كلمات مرور ولا روابط وصول ولا أرقام هاتف. يُحفظ السجل للمدة اللازمة للأمن وتسوية النزاعات والوفاء بمتطلبات القانون، ولا يُعدَّل ولا يُحذف عندما تحذف شركة حسابها.',
         '<strong>بيانات قصيرة الأجل:</strong> يعمل رابط توثيق البريد 24 ساعة، ورابط إعادة تعيين كلمة المرور ساعة واحدة، ورابط الدعوة 14 يومًا على الأكثر.',
       ]],
 
