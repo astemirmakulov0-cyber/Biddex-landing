@@ -9,7 +9,7 @@
 // {{email}}, {{whatsapp}} (a link), {{settings}} (link to the app's Settings) are filled in by the builder.
 
 // The day the pages are published (the day this version is pushed). Change it here, run the builder, commit.
-const EFFECTIVE_DATE = '2026-10-10';
+const EFFECTIVE_DATE = '2026-10-12';
 
 const privacy = {
   en: {
@@ -33,6 +33,7 @@ const privacy = {
         ['Phone and WhatsApp consent', 'For suppliers we invite: the phone number recorded by the Biddex team and a record of the consent (when, how, and any withdrawal). We use it only to send you invitation links.'],
         ['Technical data', 'Your IP address and the details of each request are handled by our servers to run and protect the service (for example to limit repeated requests). Our request log keeps the method, the address requested (secret tokens masked), the result and the time. We do not record login times, use analytics or advertising tools, or set cookies; your browser’s local storage keeps your session, theme and language.'],
         ['People in a company (buyers)', 'Name, e-mail address and role of each person who works in a buyer company’s account; invitations (the invited e-mail address, role, who invited, dates); and a history of what each person did on the company’s requests and orders (created, published or cancelled a request; shortlisted, rejected or chose a bid; confirmed receipt; opened a dispute; recorded a payment; reviewed a supplier), with the time.'],
+        ['Spending rules and approvals (buyers)', 'The spending limits an owner sets (an approval threshold and a monthly budget); approval requests for orders (the order, its amount, the supplier, who asked, who decided, the owner’s reason when an order is not approved, and the time); and notices about them.'],
       ]],
 
       ['h2', '3. Why we use your data, and on what basis'],
@@ -55,6 +56,7 @@ const privacy = {
         'Buyers may see a supplier’s quality figures (number of orders, share without claims, average stars, on-time share) once enough orders are counted. The comment of a review is visible only to the reviewed supplier, to its author and to the Biddex team.',
         'The Biddex team can see accounts, verification documents, deals and order chats, in order to verify companies, support users and resolve disputes.',
         'People in the same buyer company see each other’s names, e-mail addresses and roles, and the history of who did what on the company’s requests and orders. Suppliers and other companies never see the names of a buyer’s people.',
+        'Approval requests and the owner’s answers are visible only to the people of the buyer company who may decide on bids (owners and managers). The supplier sees nothing about an approval until the owner approves and the purchase order is issued.',
       ]],
 
       ['h2', '5. Service providers that process data for us'],
@@ -92,7 +94,7 @@ const privacy = {
         '<strong>Deactivation.</strong> Ask us ({{email}}). A deactivated account cannot sign in; this alone does not delete data. It is normally refused while there are open orders.',
         '<strong>E-mail choices.</strong> In Settings you can switch off e-mails about new requests and e-mails about other notifications. E-mails needed for your account (verification, password reset, account notices) are always sent.',
         '<strong>WhatsApp consent.</strong> A supplier can withdraw it on the invitation page or by telling us.',
-        '<strong>People in a company.</strong> A person invited to a company can leave it themselves (Settings → People → “Leave the company”, confirmed with their password). Their account is then deleted and their personal data erased as described in section 9; the company keeps its business records, which show them as a former member. A company owner can remove a person with the same effect. A manager or staff member’s “Download my data” contains their own profile, role and actions. Each person sets their own e-mail choices. One person belongs to one company.',
+        '<strong>People in a company.</strong> A person invited to a company can leave it themselves (Settings → People → “Leave the company”, confirmed with their password). Their account is then deleted and their personal data erased as described in section 9; the company keeps its business records, which show them as a former member. A company owner can remove a person with the same effect. A manager or staff member’s “Download my data” contains their own profile, role and actions. Each person sets their own e-mail choices. One person belongs to one company. An approval request you made or decided stays with the order as a business record; your name is then shown as a former member (the owner’s reason for a rejection stays with it).',
         '<strong>Anything else</strong>, including objecting to a use of your data or asking a question about it: contact us. We will reply as soon as we can.',
       ]],
 
@@ -100,7 +102,7 @@ const privacy = {
       ['ul', [
         '<strong>Active account:</strong> as long as the account exists.',
         '<strong>After you delete your account:</strong> we erase your name, your e-mail address (replaced by a technical address), phone, address, our verification notes, the verification documents and catalog photos (deleted from file storage), your notifications, your stock list, your phone and consent records, the text of reviews you wrote or answered, and your invitation links stop working.',
-        '<strong>What stays after deletion:</strong> the company name, CR number and country, and the records shared with the other company — purchase orders, orders, delivery details, invoices, payments, chat messages, documents added to an order, and review ratings (without your comments); and the history of actions on requests and orders, without the person’s name (shown as “former member”). They stay for as long as the other company needs them and the law requires; there is no automatic clean-up yet.',
+        '<strong>What stays after deletion:</strong> the company name, CR number and country, and the records shared with the other company — purchase orders, orders, delivery details, invoices, payments, chat messages, documents added to an order, and review ratings (without your comments); and the history of actions on requests and orders, without the person’s name (shown as “former member”), and approval requests with their amounts, without the name of the person. They stay for as long as the other company needs them and the law requires; there is no automatic clean-up yet.',
         '<strong>Deactivated accounts</strong> keep their data until deletion is requested.',
         '<strong>Backups:</strong> a second copy of uploaded files and a daily copy of the Biddex database are kept in separate private storage (US West, California). A file that changes or is deleted stays in the backup for 30 more days; each database copy is kept for 30 days. We do not encrypt these copies separately. Data you erase can therefore remain in these copies for up to 30 days.',
         '<strong>The providers’ own database backups and logs:</strong> kept according to the settings of the providers (Neon, Railway, Sentry).',
@@ -108,6 +110,9 @@ const privacy = {
         '<strong>Short-lived data:</strong> an e-mail verification link works for 24 hours, a password-reset link for one hour, a supplier invitation link for at most 14 days.',
         '<strong>Team invitations:</strong> the link works for 7 days; the invitation record (invited e-mail address, role) is deleted 30 days after it expires, whether it was accepted, cancelled or never used.',
         '<strong>History of actions:</strong> stays with the requests and orders it belongs to; when a person leaves or is removed, their name is erased and the entries show “former member”. When a company is deleted, the accounts of all its people are erased.',
+        '<strong>Approval requests:</strong> an unanswered request expires after 3 days; every request is kept with its order after that as a business record, without the name of a person who has left.',
+        '<strong>Personal notices</strong> (answers to a manager’s request) are deleted when that person leaves or is removed.',
+        '<strong>Budget warnings</strong> (80 % and 100 % of the monthly budget) are kept like other notifications.',
       ]],
 
       ['h2', '10. Changes to this policy'],
@@ -137,6 +142,7 @@ const privacy = {
         ['الكتالوج والمخزون', 'للموردين: أسماء المنتجات وأسعارها ووحداتها وصورها. للمشترين: قائمة المخزون الخاصة بالمشتري (لا تظهر لأي جهة أخرى).'],
         ['الصفقات', 'طلبات التسعير (العنوان والوصف والكمية والميزانية وصورة اختيارية)، والعروض (الأسعار والملاحظات والمرفقات)، وأوامر الشراء، والطلبيات، وتفاصيل التسليم، والمستندات المضافة إلى الطلبية، والفواتير، والمدفوعات التي تبلّغ عنها (المبلغ والطريقة والمرجع)، ورسائل المحادثة على الطلبية، وتقييمات الموردين، ومعاملات رصيد العروض (المحفظة).'],
         ['الأشخاص في الشركة (المشترون)', 'اسم كل شخص يعمل في حساب شركة مشترية وبريده الإلكتروني ودوره؛ الدعوات (البريد الإلكتروني المدعو والدور ومن دعاه والتواريخ)؛ وسجل لما فعله كل شخص في طلبات الشركة وطلبياتها (إنشاء الطلب أو نشره أو إلغاؤه؛ إضافة عرض إلى القائمة المختصرة أو رفضه أو اختياره؛ تأكيد الاستلام؛ فتح نزاع؛ تسجيل دفعة؛ تقييم مورّد) مع الوقت.'],
+        ['قواعد الإنفاق والموافقات (المشترون)', 'حدود الإنفاق التي يضعها المالك (حد الموافقة والميزانية الشهرية)؛ طلبات الموافقة على الطلبيات (الطلبية ومبلغها والمورّد ومن طلب ومن قرّر وسبب المالك عند عدم الموافقة والوقت)؛ والإشعارات المتعلقة بها.'],
         ['الإشعارات', 'الإشعارات داخل التطبيق ورسائل البريد التي نرسلها إليك عن حسابك وصفقاتك.'],
         ['الهاتف وموافقة واتساب', 'للموردين الذين ندعوهم: رقم الهاتف الذي سجّله فريق Biddex وسجلّ الموافقة (متى وكيف وأي سحب لها). نستخدمه فقط لإرسال روابط الدعوة إليك.'],
         ['البيانات التقنية', 'يعالج خادمنا عنوان IP وتفاصيل كل طلب لتشغيل الخدمة وحمايتها (مثل الحدّ من الطلبات المتكررة). يحتفظ سجلّ الطلبات بالأسلوب والعنوان المطلوب (مع إخفاء الرموز السرية) والنتيجة والوقت. لا نسجّل أوقات الدخول، ولا نستخدم أدوات التحليل أو الإعلانات، ولا نضع ملفات تعريف الارتباط (كوكيز)؛ ويحفظ متصفحك في التخزين المحلي جلستك والمظهر واللغة.'],
@@ -162,6 +168,7 @@ const privacy = {
         'قد يرى المشترون مؤشرات جودة المورّد (عدد الطلبيات ونسبة الخالية من المطالبات ومتوسط النجوم ونسبة الالتزام بالموعد) بعد احتساب عدد كافٍ من الطلبيات. أما تعليق التقييم فلا يراه إلا المورّد الذي قُيّم وكاتبه وفريق Biddex.',
         'يستطيع فريق Biddex الاطلاع على الحسابات ومستندات التوثيق والصفقات ومحادثات الطلبيات، وذلك للتحقق من الشركات ودعم المستخدمين وحل النزاعات.',
         'يرى الأشخاص العاملون في شركة المشتري نفسها أسماء بعضهم وبريدهم الإلكتروني وأدوارهم وسجل من فعل ماذا في طلبات الشركة وطلبياتها. أما الموردون والشركات الأخرى فلا ترى أبدًا أسماء أشخاص المشتري.',
+        'لا يرى طلبات الموافقة وردود المالك إلا الأشخاص في شركة المشتري الذين يحق لهم البتّ في العروض (المالكون والمديرون). ولا يرى المورّد شيئًا عن الموافقة إلا بعد أن يوافق المالك ويُصدر أمر الشراء.',
       ]],
 
       ['h2', '5. مزوّدو الخدمة الذين يعالجون البيانات لحسابنا'],
@@ -199,7 +206,7 @@ const privacy = {
         '<strong>التعطيل.</strong> اطلبه منا ({{email}}). الحساب المعطّل لا يستطيع تسجيل الدخول؛ وهذا وحده لا يحذف البيانات. ويُرفض عادةً ما دامت هناك طلبيات مفتوحة.',
         '<strong>خيارات البريد.</strong> في الإعدادات يمكنك إيقاف رسائل البريد عن الطلبات الجديدة ورسائل البريد عن الإشعارات الأخرى. أما الرسائل اللازمة لحسابك (التوثيق وإعادة تعيين كلمة المرور وإشعارات الحساب) فتُرسل دائمًا.',
         '<strong>موافقة واتساب.</strong> يستطيع المورّد سحبها في صفحة الدعوة أو بإبلاغنا.',
-        '<strong>الأشخاص في الشركة.</strong> يمكن لمن دُعي إلى شركة أن يغادرها بنفسه (الإعدادات ← الأشخاص ← «مغادرة الشركة»، بتأكيد كلمة المرور). عندها يُحذف حسابه وتُمحى بياناته الشخصية كما في القسم 9، وتحتفظ الشركة بسجلاتها التجارية التي تظهر فيها باسم «عضو سابق». ويمكن لمالك الشركة إزالة أي شخص بالأثر نفسه. يحتوي «تنزيل بياناتي» لدى المدير أو الموظف على ملفه الشخصي ودوره وأفعاله فقط. يحدد كل شخص خياراته في البريد الإلكتروني بنفسه. ينتمي الشخص الواحد إلى شركة واحدة.',
+        '<strong>الأشخاص في الشركة.</strong> يمكن لمن دُعي إلى شركة أن يغادرها بنفسه (الإعدادات ← الأشخاص ← «مغادرة الشركة»، بتأكيد كلمة المرور). عندها يُحذف حسابه وتُمحى بياناته الشخصية كما في القسم 9، وتحتفظ الشركة بسجلاتها التجارية التي تظهر فيها باسم «عضو سابق». ويمكن لمالك الشركة إزالة أي شخص بالأثر نفسه. يحتوي «تنزيل بياناتي» لدى المدير أو الموظف على ملفه الشخصي ودوره وأفعاله فقط. يحدد كل شخص خياراته في البريد الإلكتروني بنفسه. ينتمي الشخص الواحد إلى شركة واحدة. يبقى طلب الموافقة الذي قدّمته أو قرّرته مع الطلبية كسجل تجاري، ويظهر اسمك عندئذ باسم «عضو سابق» (ويبقى معه سبب رفض المالك).',
         '<strong>أي أمر آخر</strong>، ومنه الاعتراض على استخدام بياناتك أو طرح سؤال عنه: تواصل معنا. وسنرد في أقرب وقت ممكن.',
       ]],
 
@@ -207,7 +214,7 @@ const privacy = {
       ['ul', [
         '<strong>الحساب النشط:</strong> ما دام الحساب قائمًا.',
         '<strong>بعد حذف حسابك:</strong> نمحو اسمك وبريدك الإلكتروني (يُستبدل بعنوان تقني) وهاتفك وعنوانك وملاحظات التوثيق لدينا، وكذلك مستندات التوثيق وصور الكتالوج (تُحذف من تخزين الملفات)، وإشعاراتك وقائمة مخزونك وسجلات هاتفك وموافقتك ونص التقييمات التي كتبتها أو أجبت عنها، وتتوقف روابط الدعوة الخاصة بك عن العمل.',
-        '<strong>ما يبقى بعد الحذف:</strong> اسم الشركة ورقم السجل التجاري والدولة، والسجلات المشتركة مع الشركة الأخرى — أوامر الشراء والطلبيات وتفاصيل التسليم والفواتير والمدفوعات ورسائل المحادثة والمستندات المضافة إلى الطلبية ودرجات التقييم (دون تعليقاتك)؛ وسجل الأفعال على الطلبات والطلبيات دون اسم الشخص (يظهر باسم «عضو سابق»). تبقى ما دامت الشركة الأخرى بحاجة إليها وما دام القانون يقتضي ذلك؛ ولا يوجد حتى الآن تنظيف تلقائي.',
+        '<strong>ما يبقى بعد الحذف:</strong> اسم الشركة ورقم السجل التجاري والدولة، والسجلات المشتركة مع الشركة الأخرى — أوامر الشراء والطلبيات وتفاصيل التسليم والفواتير والمدفوعات ورسائل المحادثة والمستندات المضافة إلى الطلبية ودرجات التقييم (دون تعليقاتك)؛ وسجل الأفعال على الطلبات والطلبيات دون اسم الشخص (يظهر باسم «عضو سابق»)، وطلبات الموافقة بمبالغها دون اسم الشخص. تبقى ما دامت الشركة الأخرى بحاجة إليها وما دام القانون يقتضي ذلك؛ ولا يوجد حتى الآن تنظيف تلقائي.',
         '<strong>الحسابات المعطّلة</strong> تحتفظ ببياناتها إلى أن يُطلب الحذف.',
         '<strong>النسخ الاحتياطية:</strong> تُحفظ نسخة ثانية من الملفات المرفوعة ونسخة يومية من قاعدة بيانات Biddex في تخزين خاص منفصل (US West، كاليفورنيا). والملف الذي يتغير أو يُحذف يبقى في النسخة الاحتياطية 30 يومًا إضافيًا؛ وتُحفظ كل نسخة من قاعدة البيانات 30 يومًا. ولا نشفّر هذه النسخ بشكل منفصل. لذلك قد تبقى البيانات التي تمحوها في هذه النسخ حتى 30 يومًا.',
         '<strong>النسخ الاحتياطية الخاصة بالمزوّدين لقاعدة البيانات والسجلات:</strong> تُحفظ وفق إعدادات المزوّدين (Neon وRailway وSentry).',
@@ -215,6 +222,9 @@ const privacy = {
         '<strong>بيانات قصيرة الأجل:</strong> يعمل رابط توثيق البريد 24 ساعة، ورابط إعادة تعيين كلمة المرور ساعة واحدة، ورابط دعوة المورّد 14 يومًا على الأكثر.',
         '<strong>دعوات الفريق:</strong> يعمل الرابط 7 أيام، ويُحذف سجل الدعوة (البريد الإلكتروني المدعو والدور) بعد 30 يومًا من انتهاء صلاحيتها، سواء قُبلت أو أُلغيت أو لم تُستخدم.',
         '<strong>سجل الأفعال:</strong> يبقى مع الطلبات والطلبيات التي يخصها؛ وعند مغادرة شخص أو إزالته يُمحى اسمه وتظهر الإدخالات باسم «عضو سابق». وعند حذف شركة تُمحى حسابات جميع أشخاصها.',
+        '<strong>طلبات الموافقة:</strong> ينتهي الطلب الذي لم يُجَب عنه بعد 3 أيام؛ ويُحفظ كل طلب مع طلبيته بعد ذلك كسجل تجاري، دون اسم الشخص الذي غادر.',
+        '<strong>الإشعارات الشخصية</strong> (الردود على طلب المدير) تُحذف عند مغادرة ذلك الشخص أو إزالته.',
+        '<strong>تنبيهات الميزانية</strong> (80% و100% من الميزانية الشهرية) تُحفظ كسائر الإشعارات.',
       ]],
 
       ['h2', '10. تغييرات هذه السياسة'],
@@ -244,6 +254,7 @@ const terms = {
 
       ['h2', '4. Buyers and suppliers'],
       ['p', 'Registered companies can post requests for quotation (RFQs) as buyers and submit quotes as suppliers. A buyer compares quotes, awards one, and a purchase order (LPO) is issued; when the supplier accepts it, an order follows, with delivery, receipt, invoice and payment recorded on Biddex.'],
+      ['p', 'A buyer company may set spending rules (an approval threshold and a monthly budget). An order that needs approval is not sent to the supplier until an owner approves it; a supplier cannot rely on a bid being awarded before the purchase order is issued.'],
       ['p', 'Biddex is a marketplace and communication platform. It does not buy or sell the goods or services exchanged between users and is not a party to the agreement formed between a buyer and a supplier.'],
 
       ['h2', '5. Payments'],
@@ -309,6 +320,7 @@ const terms = {
 
       ['h2', '4. المشترون والموردون'],
       ['p', 'يمكن للشركات المسجّلة نشر طلبات التسعير بصفتها مشترية وتقديم العروض بصفتها موردة. يقارن المشتري العروض ويرسّي أحدها فيصدر أمر شراء (LPO)؛ وحين يقبله المورّد تنشأ طلبية، ويُسجَّل على Biddex التسليم والاستلام والفاتورة والدفع.'],
+      ['p', 'يجوز لشركة المشتري وضع قواعد للإنفاق (حد للموافقة وميزانية شهرية). ولا تُرسل الطلبية التي تحتاج إلى موافقة إلى المورّد قبل موافقة المالك؛ ولا يجوز للمورّد الاعتماد على ترسية عرضه قبل إصدار أمر الشراء.'],
       ['p', 'Biddex سوق ومنصة تواصل. وهو لا يشتري ولا يبيع السلع أو الخدمات المتبادلة بين المستخدمين، وليس طرفًا في الاتفاق المبرم بين المشتري والمورّد.'],
 
       ['h2', '5. المدفوعات'],
