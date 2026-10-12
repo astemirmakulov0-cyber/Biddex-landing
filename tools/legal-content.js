@@ -31,6 +31,7 @@ const privacy = {
         ['Deals', 'Requests for quotation (title, description, quantity, budget, optional photo), quotes (prices, notes, attachments), purchase orders, orders, delivery details, documents added to an order, invoices, payments you report (amount, method, reference), chat messages on an order, reviews of suppliers, bid-credit (wallet) transactions, and, for each delivery, how many times the supplier marked it as failed.'],
         ['Notifications', 'The in-app notifications and e-mails we send you about your account and your deals.'],
         ['Phone and WhatsApp consent', 'For suppliers we invite: the phone number recorded by the Biddex team and a record of the consent (when, how, and any withdrawal). We use it only to send you invitation links.'],
+        ['Reorder reminders', 'For buyers: from your own accepted orders of the last 12 months we work out how often you usually order each item and remind you shortly before the next order is likely due. We store only which items you have switched off or snoozed (the item’s name and unit as in your last order) and a technical record that a reminder was sent for an item (a key and a date). The calculation itself is not stored, and the reminder does not contain prices.'],
         ['Technical data', 'Your IP address and the details of each request are handled by our servers to run and protect the service (for example to limit repeated requests). Our request log keeps the method, the address requested (secret tokens masked), the result and the time. We do not record login times, use analytics or advertising tools, or set cookies; your browser’s local storage keeps your session, theme and language.'],
         ['People in a company (buyers)', 'Name, e-mail address and role of each person who works in a buyer company’s account; invitations (the invited e-mail address, role, who invited, dates); and a history of what each person did on the company’s requests and orders (created, published or cancelled a request; shortlisted, rejected or chose a bid; confirmed receipt; opened a dispute; recorded a payment; reviewed a supplier), with the time.'],
         ['Spending rules and approvals (buyers)', 'The spending limits an owner sets (an approval threshold and a monthly budget); approval requests for orders (the order, its amount, the supplier, who asked, who decided, the owner’s reason when an order is not approved, and the time); and notices about them.'],
@@ -88,7 +89,7 @@ const privacy = {
       ['h2', '8. Your rights and how to use them'],
       ['p', 'Under the PDPL you may have rights over your personal data. In the app (sign in, then open {{settings}}) you can do the following yourself:'],
       ['ul', [
-        '<strong>Access.</strong> Settings → Privacy &amp; data → “Download my data” gives you a file with your profile, company, uploaded-file list (names, types, dates), requests, quotes, purchase orders, orders, invoices and payments, notifications, stock, phone and consent records, invitation links and reviews.',
+        '<strong>Access.</strong> Settings → Privacy &amp; data → “Download my data” gives you a file with your profile, company, uploaded-file list (names, types, dates), requests, quotes, purchase orders, orders, invoices and payments, notifications, stock, phone and consent records, invitation links, reviews and reorder reminder settings.',
         '<strong>Correction.</strong> In Settings you can edit your company name, CR number, country, address and phone (changing the name or CR number sends a verified company back to review). To correct anything else, including your e-mail address, contact us.',
         '<strong>Deletion.</strong> Settings → Privacy &amp; data → “Delete account” (you confirm with your password and company name). It erases your personal data as described in section 9. It is refused while the company has open orders, a dispute, an unpaid invoice or a payment waiting for confirmation, and any remaining bid credits are lost. A purchase order that the supplier has not accepted yet is cancelled automatically and the other company is told.',
         '<strong>Deactivation.</strong> Ask us ({{email}}). A deactivated account cannot sign in; this alone does not delete data. It is normally refused while there are open orders.',
@@ -101,7 +102,7 @@ const privacy = {
       ['h2', '9. How long we keep data'],
       ['ul', [
         '<strong>Active account:</strong> as long as the account exists.',
-        '<strong>After you delete your account:</strong> we erase your name, your e-mail address (replaced by a technical address), phone, address, our verification notes, the verification documents and catalog photos (deleted from file storage), your notifications, your stock list, your phone and consent records, the text of reviews you wrote or answered, and your invitation links stop working.',
+        '<strong>After you delete your account:</strong> we erase your name, your e-mail address (replaced by a technical address), phone, address, our verification notes, the verification documents and catalog photos (deleted from file storage), your notifications, your stock list, your reorder reminder settings and records, your phone and consent records, the text of reviews you wrote or answered, and your invitation links stop working.',
         '<strong>What stays after deletion:</strong> the company name, CR number and country, and the records shared with the other company — purchase orders, orders, delivery details, invoices, payments, chat messages, documents added to an order, and review ratings (without your comments); and the history of actions on requests and orders, without the person’s name (shown as “former member”), and approval requests with their amounts, without the name of the person. They stay for as long as the other company needs them and the law requires; there is no automatic clean-up yet.',
         '<strong>Deactivated accounts</strong> keep their data until deletion is requested.',
         '<strong>Backups:</strong> a second copy of uploaded files and a daily copy of the Biddex database are kept in separate private storage (US West, California). A file that changes or is deleted stays in the backup for 30 more days; each database copy is kept for 30 days. We do not encrypt these copies separately. Data you erase can therefore remain in these copies for up to 30 days.',
@@ -114,6 +115,7 @@ const privacy = {
         '<strong>Personal notices</strong> (answers to a manager’s request) are deleted when that person leaves or is removed.',
         '<strong>Budget warnings</strong> (80 % and 100 % of the monthly budget) are kept like other notifications.',
         '<strong>Reliability figures</strong> are calculated from the orders and reviews of the last 12 months; the underlying records are kept as described above, the figures themselves are not stored separately.',
+        '<strong>Reorder reminders:</strong> the record that a reminder was sent is deleted after 13 months. The items you switched off stay until you turn them on again or delete the account.',
       ]],
 
       ['h2', '10. Changes to this policy'],
@@ -146,6 +148,7 @@ const privacy = {
         ['قواعد الإنفاق والموافقات (المشترون)', 'حدود الإنفاق التي يضعها المالك (حد الموافقة والميزانية الشهرية)؛ طلبات الموافقة على الطلبيات (الطلبية ومبلغها والمورّد ومن طلب ومن قرّر وسبب المالك عند عدم الموافقة والوقت)؛ والإشعارات المتعلقة بها.'],
         ['الإشعارات', 'الإشعارات داخل التطبيق ورسائل البريد التي نرسلها إليك عن حسابك وصفقاتك.'],
         ['الهاتف وموافقة واتساب', 'للموردين الذين ندعوهم: رقم الهاتف الذي سجّله فريق Biddex وسجلّ الموافقة (متى وكيف وأي سحب لها). نستخدمه فقط لإرسال روابط الدعوة إليك.'],
+        ['تذكيرات إعادة الطلب', 'للمشترين: بالاعتماد على طلبياتك المقبولة خلال آخر 12 شهرًا، نحسب عادةً كم مرة تطلب كل صنف، ونذكّرك قبل الموعد المتوقع للطلب التالي بوقت قصير. نحتفظ فقط بالأصناف التي أوقفت تذكيراتها أو أجّلتها (اسم الصنف ووحدته كما في آخر طلبية) وبسجل تقني يفيد بإرسال تذكير عن صنف (مفتاح وتاريخ). الحساب نفسه لا يُخزَّن، ولا يتضمن التذكير أي أسعار.'],
         ['البيانات التقنية', 'يعالج خادمنا عنوان IP وتفاصيل كل طلب لتشغيل الخدمة وحمايتها (مثل الحدّ من الطلبات المتكررة). يحتفظ سجلّ الطلبات بالأسلوب والعنوان المطلوب (مع إخفاء الرموز السرية) والنتيجة والوقت. لا نسجّل أوقات الدخول، ولا نستخدم أدوات التحليل أو الإعلانات، ولا نضع ملفات تعريف الارتباط (كوكيز)؛ ويحفظ متصفحك في التخزين المحلي جلستك والمظهر واللغة.'],
       ]],
 
@@ -201,7 +204,7 @@ const privacy = {
       ['h2', '8. حقوقك وكيف تستخدمها'],
       ['p', 'قد تكون لك حقوق على بياناتك الشخصية بموجب القانون. في التطبيق (سجّل الدخول ثم افتح {{settings}}) يمكنك القيام بما يلي بنفسك:'],
       ['ul', [
-        '<strong>الاطلاع.</strong> الإعدادات ← الخصوصية والبيانات ← «تنزيل بياناتي» يعطيك ملفًا يضم ملفك الشخصي وشركتك وقائمة الملفات المرفوعة (الأسماء والأنواع والتواريخ) والطلبات والعروض وأوامر الشراء والطلبيات والفواتير والمدفوعات والإشعارات والمخزون وسجلات الهاتف والموافقة وروابط الدعوة والتقييمات.',
+        '<strong>الاطلاع.</strong> الإعدادات ← الخصوصية والبيانات ← «تنزيل بياناتي» يعطيك ملفًا يضم ملفك الشخصي وشركتك وقائمة الملفات المرفوعة (الأسماء والأنواع والتواريخ) والطلبات والعروض وأوامر الشراء والطلبيات والفواتير والمدفوعات والإشعارات والمخزون وسجلات الهاتف والموافقة وروابط الدعوة والتقييمات وإعدادات تذكيرات إعادة الطلب.',
         '<strong>التصحيح.</strong> في الإعدادات يمكنك تعديل اسم الشركة ورقم السجل التجاري والدولة والعنوان والهاتف (تغيير الاسم أو رقم السجل يعيد الشركة الموثّقة إلى المراجعة). ولتصحيح أي شيء آخر، ومنه بريدك الإلكتروني، تواصل معنا.',
         '<strong>الحذف.</strong> الإعدادات ← الخصوصية والبيانات ← «حذف الحساب» (تؤكد بكلمة المرور واسم الشركة). يمحو بياناتك الشخصية على النحو المبيّن في القسم 9. ويُرفض ما دامت لدى الشركة طلبيات مفتوحة أو نزاع أو فاتورة غير مدفوعة أو دفعة بانتظار التأكيد، ويضيع أي رصيد عروض متبقٍ. أما أمر الشراء الذي لم يقبله المورّد بعد فيُلغى تلقائيًا وتُخطَر الشركة الأخرى.',
         '<strong>التعطيل.</strong> اطلبه منا ({{email}}). الحساب المعطّل لا يستطيع تسجيل الدخول؛ وهذا وحده لا يحذف البيانات. ويُرفض عادةً ما دامت هناك طلبيات مفتوحة.',
@@ -214,7 +217,7 @@ const privacy = {
       ['h2', '9. مدة الاحتفاظ بالبيانات'],
       ['ul', [
         '<strong>الحساب النشط:</strong> ما دام الحساب قائمًا.',
-        '<strong>بعد حذف حسابك:</strong> نمحو اسمك وبريدك الإلكتروني (يُستبدل بعنوان تقني) وهاتفك وعنوانك وملاحظات التوثيق لدينا، وكذلك مستندات التوثيق وصور الكتالوج (تُحذف من تخزين الملفات)، وإشعاراتك وقائمة مخزونك وسجلات هاتفك وموافقتك ونص التقييمات التي كتبتها أو أجبت عنها، وتتوقف روابط الدعوة الخاصة بك عن العمل.',
+        '<strong>بعد حذف حسابك:</strong> نمحو اسمك وبريدك الإلكتروني (يُستبدل بعنوان تقني) وهاتفك وعنوانك وملاحظات التوثيق لدينا، وكذلك مستندات التوثيق وصور الكتالوج (تُحذف من تخزين الملفات)، وإشعاراتك وقائمة مخزونك وإعدادات تذكيرات إعادة الطلب وسجلاتها وسجلات هاتفك وموافقتك ونص التقييمات التي كتبتها أو أجبت عنها، وتتوقف روابط الدعوة الخاصة بك عن العمل.',
         '<strong>ما يبقى بعد الحذف:</strong> اسم الشركة ورقم السجل التجاري والدولة، والسجلات المشتركة مع الشركة الأخرى — أوامر الشراء والطلبيات وتفاصيل التسليم والفواتير والمدفوعات ورسائل المحادثة والمستندات المضافة إلى الطلبية ودرجات التقييم (دون تعليقاتك)؛ وسجل الأفعال على الطلبات والطلبيات دون اسم الشخص (يظهر باسم «عضو سابق»)، وطلبات الموافقة بمبالغها دون اسم الشخص. تبقى ما دامت الشركة الأخرى بحاجة إليها وما دام القانون يقتضي ذلك؛ ولا يوجد حتى الآن تنظيف تلقائي.',
         '<strong>الحسابات المعطّلة</strong> تحتفظ ببياناتها إلى أن يُطلب الحذف.',
         '<strong>النسخ الاحتياطية:</strong> تُحفظ نسخة ثانية من الملفات المرفوعة ونسخة يومية من قاعدة بيانات Biddex في تخزين خاص منفصل (US West، كاليفورنيا). والملف الذي يتغير أو يُحذف يبقى في النسخة الاحتياطية 30 يومًا إضافيًا؛ وتُحفظ كل نسخة من قاعدة البيانات 30 يومًا. ولا نشفّر هذه النسخ بشكل منفصل. لذلك قد تبقى البيانات التي تمحوها في هذه النسخ حتى 30 يومًا.',
@@ -227,6 +230,7 @@ const privacy = {
         '<strong>الإشعارات الشخصية</strong> (الردود على طلب المدير) تُحذف عند مغادرة ذلك الشخص أو إزالته.',
         '<strong>تنبيهات الميزانية</strong> (80% و100% من الميزانية الشهرية) تُحفظ كسائر الإشعارات.',
         '<strong>مؤشرات الموثوقية</strong> تُحسب من طلبيات آخر 12 شهرًا وتقييماتها؛ وتُحفظ السجلات الأصلية كما سبق، ولا تُخزَّن المؤشرات نفسها بشكل منفصل.',
+        '<strong>تذكيرات إعادة الطلب:</strong> يُحذف سجل إرسال التذكير بعد 13 شهرًا. وتبقى الأصناف التي أوقفتها إلى أن تعيد تفعيلها أو تحذف الحساب.',
       ]],
 
       ['h2', '10. تغييرات هذه السياسة'],
