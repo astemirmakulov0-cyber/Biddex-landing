@@ -28,7 +28,7 @@ const privacy = {
         ['Company', 'Company name, type, commercial registration (CR) number, country, address, phone; verification status and the notes of our review; your e-mail notification choices.'],
         ['Verification documents', 'The files you upload to prove the company (for example a trade licence or CR certificate). Only the Biddex team can open them.'],
         ['Catalog and stock', 'For suppliers: product names, prices, units and photos. For buyers: the buyer’s own stock list (never shown to anyone else).'],
-        ['Deals', 'Requests for quotation (title, description, quantity, budget, optional photo), quotes (prices, notes, attachments), purchase orders, orders, delivery details, documents added to an order, invoices, payments you report (amount, method, reference), chat messages on an order, reviews of suppliers, and bid-credit (wallet) transactions.'],
+        ['Deals', 'Requests for quotation (title, description, quantity, budget, optional photo), quotes (prices, notes, attachments), purchase orders, orders, delivery details, documents added to an order, invoices, payments you report (amount, method, reference), chat messages on an order, reviews of suppliers, bid-credit (wallet) transactions, and, for each delivery, how many times the supplier marked it as failed.'],
         ['Notifications', 'The in-app notifications and e-mails we send you about your account and your deals.'],
         ['Phone and WhatsApp consent', 'For suppliers we invite: the phone number recorded by the Biddex team and a record of the consent (when, how, and any withdrawal). We use it only to send you invitation links.'],
         ['Technical data', 'Your IP address and the details of each request are handled by our servers to run and protect the service (for example to limit repeated requests). Our request log keeps the method, the address requested (secret tokens masked), the result and the time. We do not record login times, use analytics or advertising tools, or set cookies; your browser’s local storage keeps your session, theme and language.'],
@@ -53,7 +53,7 @@ const privacy = {
         'A buyer’s identity is hidden from suppliers until the buyer awards that supplier’s quote. Suppliers never see each other’s quotes.',
         'A buyer sees the company name, price and terms of every supplier that quotes on its request. After an award the two companies see each other’s company name and the data of their order (delivery, documents, chat, invoice, payments).',
         'A supplier’s catalog is visible to buyers once the supplier is verified.',
-        'Buyers may see a supplier’s quality figures (number of orders, share without claims, average stars, on-time share) once enough orders are counted. The comment of a review is visible only to the reviewed supplier, to its author and to the Biddex team.',
+        'Buyers may see a supplier’s reliability figures, computed over all buyers for the last 12 months: completed orders, the share without problems, reviews (average stars, delivered on time, as ordered), and — on the supplier’s card — the shares of disputes, declined purchase orders and failed deliveries. A figure is shown only when it is based on at least 5 items from at least 3 different buyers; otherwise buyers see “New supplier”. Only totals and percentages are shown: no buyer is named, and the comment of a review is visible only to the reviewed supplier, to its author and to the Biddex team.',
         'The Biddex team can see accounts, verification documents, deals and order chats, in order to verify companies, support users and resolve disputes.',
         'People in the same buyer company see each other’s names, e-mail addresses and roles, and the history of who did what on the company’s requests and orders. Suppliers and other companies never see the names of a buyer’s people.',
         'Approval requests and the owner’s answers are visible only to the people of the buyer company who may decide on bids (owners and managers). The supplier sees nothing about an approval until the owner approves and the purchase order is issued.',
@@ -113,6 +113,7 @@ const privacy = {
         '<strong>Approval requests:</strong> an unanswered request expires after 3 days; every request is kept with its order after that as a business record, without the name of a person who has left.',
         '<strong>Personal notices</strong> (answers to a manager’s request) are deleted when that person leaves or is removed.',
         '<strong>Budget warnings</strong> (80 % and 100 % of the monthly budget) are kept like other notifications.',
+        '<strong>Reliability figures</strong> are calculated from the orders and reviews of the last 12 months; the underlying records are kept as described above, the figures themselves are not stored separately.',
       ]],
 
       ['h2', '10. Changes to this policy'],
@@ -140,7 +141,7 @@ const privacy = {
         ['الشركة', 'اسم الشركة ونوعها ورقم السجل التجاري (CR) والدولة والعنوان والهاتف؛ حالة التوثيق وملاحظات مراجعتنا؛ خياراتك للإشعارات عبر البريد.'],
         ['مستندات التوثيق', 'الملفات التي ترفعها لإثبات الشركة (مثل الرخصة التجارية أو شهادة السجل التجاري). لا يستطيع فتحها إلا فريق Biddex.'],
         ['الكتالوج والمخزون', 'للموردين: أسماء المنتجات وأسعارها ووحداتها وصورها. للمشترين: قائمة المخزون الخاصة بالمشتري (لا تظهر لأي جهة أخرى).'],
-        ['الصفقات', 'طلبات التسعير (العنوان والوصف والكمية والميزانية وصورة اختيارية)، والعروض (الأسعار والملاحظات والمرفقات)، وأوامر الشراء، والطلبيات، وتفاصيل التسليم، والمستندات المضافة إلى الطلبية، والفواتير، والمدفوعات التي تبلّغ عنها (المبلغ والطريقة والمرجع)، ورسائل المحادثة على الطلبية، وتقييمات الموردين، ومعاملات رصيد العروض (المحفظة).'],
+        ['الصفقات', 'طلبات التسعير (العنوان والوصف والكمية والميزانية وصورة اختيارية)، والعروض (الأسعار والملاحظات والمرفقات)، وأوامر الشراء، والطلبيات، وتفاصيل التسليم، والمستندات المضافة إلى الطلبية، والفواتير، والمدفوعات التي تبلّغ عنها (المبلغ والطريقة والمرجع)، ورسائل المحادثة على الطلبية، وتقييمات الموردين، ومعاملات رصيد العروض (المحفظة)، وعدد المرات التي أبلغ فيها المورّد عن فشل التوصيل لكل عملية توصيل.'],
         ['الأشخاص في الشركة (المشترون)', 'اسم كل شخص يعمل في حساب شركة مشترية وبريده الإلكتروني ودوره؛ الدعوات (البريد الإلكتروني المدعو والدور ومن دعاه والتواريخ)؛ وسجل لما فعله كل شخص في طلبات الشركة وطلبياتها (إنشاء الطلب أو نشره أو إلغاؤه؛ إضافة عرض إلى القائمة المختصرة أو رفضه أو اختياره؛ تأكيد الاستلام؛ فتح نزاع؛ تسجيل دفعة؛ تقييم مورّد) مع الوقت.'],
         ['قواعد الإنفاق والموافقات (المشترون)', 'حدود الإنفاق التي يضعها المالك (حد الموافقة والميزانية الشهرية)؛ طلبات الموافقة على الطلبيات (الطلبية ومبلغها والمورّد ومن طلب ومن قرّر وسبب المالك عند عدم الموافقة والوقت)؛ والإشعارات المتعلقة بها.'],
         ['الإشعارات', 'الإشعارات داخل التطبيق ورسائل البريد التي نرسلها إليك عن حسابك وصفقاتك.'],
@@ -165,7 +166,7 @@ const privacy = {
         'تبقى هوية المشتري مخفية عن الموردين إلى أن يرسّي المشتري عرض ذلك المورّد. ولا يرى الموردون عروض بعضهم بعضًا.',
         'يرى المشتري اسم الشركة والسعر والشروط لكل مورّد يقدّم عرضًا على طلبه. وبعد الترسية تتبادل الشركتان رؤية اسم الشركة وبيانات الطلبية (التسليم والمستندات والمحادثة والفاتورة والمدفوعات).',
         'يظهر كتالوج المورّد للمشترين بمجرد توثيق المورّد.',
-        'قد يرى المشترون مؤشرات جودة المورّد (عدد الطلبيات ونسبة الخالية من المطالبات ومتوسط النجوم ونسبة الالتزام بالموعد) بعد احتساب عدد كافٍ من الطلبيات. أما تعليق التقييم فلا يراه إلا المورّد الذي قُيّم وكاتبه وفريق Biddex.',
+        'قد يرى المشترون مؤشرات موثوقية المورّد، المحسوبة على جميع المشترين لآخر 12 شهرًا: الطلبيات المكتملة ونسبة الخالية من المشاكل والتقييمات (متوسط النجوم والتسليم في الموعد والمطابقة للطلب)، وفي بطاقة المورّد نسب النزاعات وأوامر الشراء المرفوضة وعمليات التوصيل الفاشلة. ولا يظهر المؤشر إلا إذا استند إلى 5 عناصر على الأقل من 3 مشترين مختلفين على الأقل؛ وإلا يرى المشترون «مورّد جديد». تُعرض الإجماليات والنسب فقط: لا يُذكر اسم أي مشترٍ، ولا يرى تعليق التقييم إلا المورّد الذي قُيّم وكاتبه وفريق Biddex.',
         'يستطيع فريق Biddex الاطلاع على الحسابات ومستندات التوثيق والصفقات ومحادثات الطلبيات، وذلك للتحقق من الشركات ودعم المستخدمين وحل النزاعات.',
         'يرى الأشخاص العاملون في شركة المشتري نفسها أسماء بعضهم وبريدهم الإلكتروني وأدوارهم وسجل من فعل ماذا في طلبات الشركة وطلبياتها. أما الموردون والشركات الأخرى فلا ترى أبدًا أسماء أشخاص المشتري.',
         'لا يرى طلبات الموافقة وردود المالك إلا الأشخاص في شركة المشتري الذين يحق لهم البتّ في العروض (المالكون والمديرون). ولا يرى المورّد شيئًا عن الموافقة إلا بعد أن يوافق المالك ويُصدر أمر الشراء.',
@@ -225,6 +226,7 @@ const privacy = {
         '<strong>طلبات الموافقة:</strong> ينتهي الطلب الذي لم يُجَب عنه بعد 3 أيام؛ ويُحفظ كل طلب مع طلبيته بعد ذلك كسجل تجاري، دون اسم الشخص الذي غادر.',
         '<strong>الإشعارات الشخصية</strong> (الردود على طلب المدير) تُحذف عند مغادرة ذلك الشخص أو إزالته.',
         '<strong>تنبيهات الميزانية</strong> (80% و100% من الميزانية الشهرية) تُحفظ كسائر الإشعارات.',
+        '<strong>مؤشرات الموثوقية</strong> تُحسب من طلبيات آخر 12 شهرًا وتقييماتها؛ وتُحفظ السجلات الأصلية كما سبق، ولا تُخزَّن المؤشرات نفسها بشكل منفصل.',
       ]],
 
       ['h2', '10. تغييرات هذه السياسة'],
@@ -267,7 +269,7 @@ const terms = {
       ['p', 'Biddex may ask for supporting documents (such as a CR certificate) to verify a company before enabling features. Only verified companies can post requests and submit quotes. A buyer’s identity stays hidden from suppliers until it awards a quote; after that the two companies see each other’s details for that order. The Privacy Policy explains this in full.'],
 
       ['h2', '8. Reviews'],
-      ['p', 'After a buyer confirms receipt it can rate the supplier. Ratings and the quality figures built from them are informational and carry no penalty or charge by themselves. Comments must be truthful and respectful; the Biddex team may hide a comment that breaks these terms.'],
+      ['p', 'After a buyer confirms receipt it can rate the supplier. Ratings and the quality figures built from them are informational and carry no penalty or charge by themselves. Comments must be truthful and respectful; the Biddex team may hide a comment that breaks these terms. Reliability figures about a supplier are informational, are computed from platform data and are not a guarantee; a dispute or a declined purchase order is not by itself a finding of fault.'],
 
       ['h2', '9. Invitation links and contact by WhatsApp'],
       ['p', 'The Biddex team may send a verified supplier a private link to quote on one request without signing in. The link is personal: do not forward it. Biddex contacts a supplier by phone or WhatsApp only after the supplier’s consent, which can be withdrawn at any time.'],
@@ -333,7 +335,7 @@ const terms = {
       ['p', 'قد يطلب Biddex مستندات داعمة (مثل شهادة السجل التجاري) للتحقق من الشركة قبل تفعيل بعض الخصائص. ولا يستطيع نشر الطلبات وتقديم العروض إلا الشركات الموثّقة. تبقى هوية المشتري مخفية عن الموردين إلى أن يرسّي عرضًا؛ وبعد ذلك تتبادل الشركتان رؤية بياناتهما الخاصة بتلك الطلبية. وتشرح سياسة الخصوصية ذلك بالتفصيل.'],
 
       ['h2', '8. التقييمات'],
-      ['p', 'بعد أن يؤكد المشتري الاستلام يمكنه تقييم المورّد. والتقييمات ومؤشرات الجودة المبنية عليها للإحاطة فقط ولا تترتب عليها بحد ذاتها عقوبة أو رسم. ويجب أن تكون التعليقات صادقة ومحترمة؛ ولفريق Biddex إخفاء أي تعليق يخالف هذه الشروط.'],
+      ['p', 'بعد أن يؤكد المشتري الاستلام يمكنه تقييم المورّد. والتقييمات ومؤشرات الجودة المبنية عليها للإحاطة فقط ولا تترتب عليها بحد ذاتها عقوبة أو رسم. ويجب أن تكون التعليقات صادقة ومحترمة؛ ولفريق Biddex إخفاء أي تعليق يخالف هذه الشروط. مؤشرات الموثوقية عن المورّد معلوماتية، وتُحسب من بيانات المنصة، وليست ضمانًا؛ والنزاع أو أمر الشراء المرفوض ليس بحد ذاته إثباتًا للخطأ.'],
 
       ['h2', '9. روابط الدعوة والتواصل عبر واتساب'],
       ['p', 'قد يرسل فريق Biddex إلى مورّد موثّق رابطًا خاصًا لتقديم عرض على طلب واحد دون تسجيل الدخول. الرابط شخصي: لا تعيد إرساله. ولا يتواصل Biddex مع المورّد عبر الهاتف أو واتساب إلا بعد موافقته، ويمكنه سحب الموافقة في أي وقت.'],
